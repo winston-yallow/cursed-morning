@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://5b8m2u3j6jsc"]
+
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="1_yqxxd"]
+
+[sub_resource type="Curve3D" id="Curve3D_gqcov"]
+_data = {
+"points": PackedVector3Array(0, 0, 6, 0, 0, -6, 0, 0, 0, 0, 0, 6, 0, 0, -6, -3, 0, -10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Example Path" type="Node3D"]
+script = ExtResource("1_yqxxd")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_gqcov")

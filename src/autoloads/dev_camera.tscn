@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjjf4o8166h62"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_4dgaa"]
+
+[sub_resource type="Sky" id="Sky_0kdj8"]
+sky_material = SubResource("PhysicalSkyMaterial_4dgaa")
+
+[sub_resource type="Environment" id="Environment_ahnhn"]
+background_mode = 2
+sky = SubResource("Sky_0kdj8")
+
+[sub_resource type="Gradient" id="Gradient_mqayn"]
+offsets = PackedFloat32Array(0, 0.484848, 1)
+colors = PackedColorArray(0.118847, 0.111775, 0.285156, 1, 0.795412, 0.225495, 0.835938, 1, 1, 0.785476, 0.988876, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fmfvg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ip2um"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_mqayn")
+noise = SubResource("FastNoiseLite_fmfvg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gc11"]
+albedo_color = Color(0.505882, 0.65098, 0.768627, 1)
+albedo_texture = SubResource("NoiseTexture2D_ip2um")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tcn61"]
+material = SubResource("StandardMaterial3D_3gc11")
+size = Vector2(100, 100)
+
+[sub_resource type="SphereMesh" id="SphereMesh_drku7"]
+radius = 0.25
+height = 0.5
+
+[node name="Dev Camera" type="Marker3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ahnhn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.85082, -0.439679, 0.287729, 0, 0.547578, 0.836755, -0.525457, -0.711928, 0.46589, 0, 0, 0)
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DirectionalLight3D"]
+transform = Transform3D(0.85082, 2.98023e-08, -0.525457, -0.439678, 0.547578, -0.711928, 0.287729, 0.836755, 0.46589, 0, 0, 0)
+mesh = SubResource("PlaneMesh_tcn61")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+mesh = SubResource("SphereMesh_drku7")

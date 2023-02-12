@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ncr0xexh7hvh"]
+
+[ext_resource type="PackedScene" uid="uid://krgcjffdav" path="res://src/character/punk.gltf" id="1_odhgl"]
+[ext_resource type="Script" path="res://src/character/punk.gd" id="2_sglif"]
+
+[node name="Character" instance=ExtResource("1_odhgl")]
+script = ExtResource("2_sglif")

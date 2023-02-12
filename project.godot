@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Cursed Morning"
+run/main_scene="res://src/management/transition_manager.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://src/autoloads/event_bus.gd"
+DevRunner="*res://src/autoloads/dev_runner.gd"
 
 [filesystem]
 

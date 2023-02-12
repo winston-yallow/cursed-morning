@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://8s657itxkm1a"]
+
+[ext_resource type="Script" path="res://src/management/viewport_world.gd" id="1_he41j"]
+[ext_resource type="Shader" path="res://src/management/transition_manager.gdshader" id="2_na2xl"]
+
+[sub_resource type="World3D" id="World3D_dwgr8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbn2f"]
+shader = ExtResource("2_na2xl")
+shader_parameter/progress = 0.0
+
+[node name="Viewport World" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_he41j")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+own_world_3d = true
+world_3d = SubResource("World3D_dwgr8")
+
+[node name="Composition" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tbn2f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
