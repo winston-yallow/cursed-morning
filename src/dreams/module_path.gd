@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	character.anim.play("Run")
-	character.rotation_degrees.y = 180.0
+	
 	# Advance time and offset
 	time += delta
 	var offset := time * SPEED
