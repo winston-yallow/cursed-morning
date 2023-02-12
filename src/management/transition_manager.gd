@@ -11,8 +11,9 @@ var active_on_a := true
 func _ready() -> void:
 	# Load first scene
 	var dream := preload("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
-	_create_vp(dream)
+	dream.sync_progress = 1.0
 	dream.startup()
+	_create_vp(dream)
 	
 	EventBus.transition.connect(_transition)
 

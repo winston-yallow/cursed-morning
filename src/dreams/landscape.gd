@@ -2,6 +2,9 @@ class_name Landscape
 extends Node3D
 
 
+var sync_progress := 0.0
+
+
 func get_camera() -> SmoothCamera:
 	return %SmoothCamera
 
