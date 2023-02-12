@@ -29,7 +29,10 @@ func _process(_delta: float) -> void:
 
 func start_sync() -> void:
 	# TODO: We need to generate a new dream here
-	dream = load("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
+	if "_2" in owner.scene_file_path:
+		dream = load("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
+	else:
+		dream = load("res://src/dreams/landscapes/example_landscape_2.tscn").instantiate()
 	dream.startup()
 	EventBus.transition.emit(dream)
 	
