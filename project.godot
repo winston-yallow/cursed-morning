@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EventBus="*res://src/autoloads/event_bus.gd"
 DevRunner="*res://src/autoloads/dev_runner.gd"
+InputManager="*res://src/autoloads/input_manager.gd"
 
 [filesystem]
 

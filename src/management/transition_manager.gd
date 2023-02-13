@@ -9,6 +9,8 @@ var active_on_a := true
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().root.mode = Window.MODE_MAXIMIZED
 	# Load first scene
 	var dream := preload("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
 	dream.sync_progress = 1.0
