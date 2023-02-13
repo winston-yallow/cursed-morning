@@ -8,7 +8,7 @@ const float border_end = 0.003;
 uniform vec4 border_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float progress : hint_range(0.0, 1.0) = 0.0;
 uniform sampler2D vp : hint_default_white;
-uniform sampler2D noise_texture : hint_default_white, repeat_enable;
+uniform sampler2D noise_texture : hint_default_white, repeat_enable, filter_linear_mipmap_anisotropic;
 varying vec2 noise_uv;
 
 void vertex() {
@@ -16,7 +16,7 @@ void vertex() {
 }
 
 void fragment() {
-	float noise = texture(noise_texture, noise_uv).x;
+	float noise = textureLod(noise_texture, noise_uv, 2.0).x;
 	vec4 color = texture(vp, SCREEN_UV);
 	float center_distance_normalized = distance(UV, vec2(0.5, 0.5)) / max_dist;
 	float factor = (center_distance_normalized + noise * 0.3) / 1.3;
