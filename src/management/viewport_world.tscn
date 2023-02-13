@@ -1,13 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://8s657itxkm1a"]
+[gd_scene load_steps=7 format=3 uid="uid://8s657itxkm1a"]
 
 [ext_resource type="Script" path="res://src/management/viewport_world.gd" id="1_he41j"]
 [ext_resource type="Shader" path="res://src/management/transition_manager.gdshader" id="2_na2xl"]
 
-[sub_resource type="World3D" id="World3D_dwgr8"]
+[sub_resource type="World3D" id="World3D_k2ba8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbn2f"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fkqqb"]
+seed = 5
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mxdpe"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_fkqqb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wn4v"]
 shader = ExtResource("2_na2xl")
-shader_parameter/progress = 0.0
+shader_parameter/border_color = Color(0.878431, 0.513726, 1, 1)
+shader_parameter/progress = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_mxdpe")
 
 [node name="Viewport World" type="Control"]
 layout_mode = 3
@@ -21,11 +33,11 @@ script = ExtResource("1_he41j")
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
 own_world_3d = true
-world_3d = SubResource("World3D_dwgr8")
+world_3d = SubResource("World3D_k2ba8")
 
 [node name="Composition" type="ColorRect" parent="."]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_tbn2f")
+material = SubResource("ShaderMaterial_3wn4v")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
