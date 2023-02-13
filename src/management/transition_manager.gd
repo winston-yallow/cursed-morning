@@ -1,10 +1,10 @@
 extends Control
 
 
-const ViewportWorldScene := preload("viewport_world.tscn")
-const ViewportWorld := preload("viewport_world.gd")
+const DreamViewportScene := preload("dream_viewport.tscn")
+const DreamViewport := preload("dream_viewport.gd")
 
-var viewports: Array[ViewportWorld] = []
+var viewports: Array[DreamViewport] = []
 var active_on_a := true
 
 
@@ -24,9 +24,9 @@ func _transition(dream: Landscape) -> void:
 
 func _create_vp(dream: Landscape) -> void:
 	if viewports.size() > 1:
-		var old: ViewportWorld = viewports.pop_front()
+		var old: DreamViewport = viewports.pop_front()
 		old.queue_free()
-	var new: ViewportWorld = ViewportWorldScene.instantiate()
+	var new: DreamViewport = DreamViewportScene.instantiate()
 	add_child(new)
 	new.set_dream(dream)
 	viewports.append(new)
