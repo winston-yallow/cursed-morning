@@ -55,5 +55,5 @@ func _process(delta: float) -> void:
 func _create_action_ui(action: Action) -> ActionUI:
 	var new_ui: ActionUI = ActionUIScene.instantiate()
 	new_ui.setup(self, action)
-	DevRunner.get_ui_parent().add_child(new_ui)
+	get_tree().current_scene.canvas_layer.add_child(new_ui)
 	return new_ui
