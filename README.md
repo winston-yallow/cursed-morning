@@ -13,8 +13,8 @@ complete nor bug free. On the contrary, please expect many unresolved bugs!
 
 ## About
 
-The player is sleeping peacfully, dreaming about lands far away. If only there
-weren't the constant ringing of their alarm clock. Half aware of their curse
+The player is sleeping peacefully, dreaming about lands far away. If only there
+wasn't the constant ringing of their alarm clock. Half aware of their curse
 of having to wake up eventually, they try to stay asleep for just a little longer.
 
 ## Mechanics
