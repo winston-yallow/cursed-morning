@@ -7,7 +7,7 @@ Made during [Godot Wild Jam #54](https://itch.io/jam/godot-wild-jam-54).
 ## :warning: Warning
 
 This project is unfinished, and most code was written at 03:00 in the morning.
-It is created with a time constraint for the game jam, and the code is neither
+It was created within the time constraints of a game jam, so the code is neither
 complete nor bug free. On the contrary, please expect many unresolved bugs!
 
 
