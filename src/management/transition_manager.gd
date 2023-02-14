@@ -7,10 +7,12 @@ const DreamViewport := preload("dream_viewport.gd")
 var viewports: Array[DreamViewport] = []
 var active_on_a := true
 
+@onready var canvas_layer: CanvasLayer = %CanvasLayer
+
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_tree().root.mode = Window.MODE_MAXIMIZED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#get_tree().root.mode = Window.MODE_MAXIMIZED
 	# Load first scene
 	var dream := preload("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
 	dream.sync_progress = 1.0

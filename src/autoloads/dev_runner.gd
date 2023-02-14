@@ -3,6 +3,7 @@ extends Node
 
 const CharacterScene := preload("res://src/character/punk.tscn")
 const DevCameraScene := preload("dev_camera.tscn")
+const TransitionManager := preload("res://src/management/transition_manager.gd")
 
 
 func _ready() -> void:
@@ -11,6 +12,13 @@ func _ready() -> void:
 		_init_module(scene)
 	elif scene is Landscape:
 		scene.startup()
+
+
+func get_ui_parent() -> Node:
+	if get_tree().current_scene is TransitionManager:
+		return get_tree().current_scene.canvas_layer
+	else:
+		return get_tree().current_scene
 
 
 func _init_module(module: Module) -> void:
