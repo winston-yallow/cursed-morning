@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1hponrydw1yi"]
+[gd_scene load_steps=7 format=3 uid="uid://c1hponrydw1yi"]
 
 [ext_resource type="Script" path="res://src/management/transition_manager.gd" id="1_30u6i"]
+[ext_resource type="PackedScene" uid="uid://c5x56plqlovpl" path="res://src/quicktimes/snooze.tscn" id="2_j0ae8"]
+[ext_resource type="FontFile" uid="uid://dex3afruterfj" path="res://src/fonts/e1234_italic.ttf" id="3_fi5m8"]
+[ext_resource type="Shader" path="res://src/management/ui_blur.gdshader" id="4_jjdfs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wyfr"]
+shader = ExtResource("4_jjdfs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prfhy"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.784314)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Transition Manager" type="Control"]
 layout_mode = 3
@@ -13,3 +31,51 @@ script = ExtResource("1_30u6i")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+
+[node name="Snooze" parent="CanvasLayer" instance=ExtResource("2_j0ae8")]
+unique_name_in_owner = true
+
+[node name="TimePanel" type="Panel" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_2wyfr")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -238.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_prfhy")
+
+[node name="Clock" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -233.0
+offset_top = 21.0
+offset_right = -73.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_fi5m8")
+theme_override_font_sizes/font_size = 40
+text = "08:00"
+vertical_alignment = 2
+
+[node name="Seconds" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 30)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_top = 37.0
+offset_right = -25.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.701961, 0.701961, 0.701961, 1)
+theme_override_fonts/font = ExtResource("3_fi5m8")
+theme_override_font_sizes/font_size = 20
+text = ":00"
+horizontal_alignment = 1
+vertical_alignment = 2
