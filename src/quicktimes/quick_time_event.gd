@@ -8,6 +8,8 @@ const ActionUI := preload("action_ui.gd")
 @export var time := 1.0
 @export var sequence: Array[Action]
 
+var _finished := false
+var _current: Action
 var _current_ui: ActionUI
 var _internal_sequence: Array[Action] = []
 
@@ -15,7 +17,9 @@ var _internal_sequence: Array[Action] = []
 func _ready() -> void:
 	# Prevent changing the original resources
 	for action in sequence:
-		_internal_sequence.append(action.duplicate())
+		var new_action := action.duplicate()
+		new_action.setup()
+		_internal_sequence.append(new_action)
 	
 	# Make this Area3D undetectable by other nodes
 	collision_layer = 0
@@ -27,23 +31,31 @@ func _ready() -> void:
 
 func _activate(_other):
 	set_process(true)
-	_current_ui = _create_action_ui(_internal_sequence.front())
+	_current = _internal_sequence.pop_front()
+	_current_ui = _create_action_ui(_current)
+
+
+func _input(event: InputEvent) -> void:
+	if is_instance_valid(_current):
+		_current._input(event)
 
 
 func _process(delta: float) -> void:
 	time -= delta
 	
 	# Process sequence items
-	var current: Action = _internal_sequence.front()
-	current._process(delta)
-	if current.finished:
-		_internal_sequence.pop_front()
-		if not _internal_sequence.is_empty():
+	_current._process(delta)
+	if _current.is_finished():
+		if _internal_sequence.is_empty():
+			_current = null
+			_finished = true
+		else:
 			_current_ui.finish_success()
-			_current_ui = _create_action_ui(_internal_sequence.front())
+			_current = _internal_sequence.pop_front()
+			_current_ui = _create_action_ui(_current)
 	
 	# Check if we reached fail or success conditions
-	if _internal_sequence.is_empty():
+	if _finished:
 		_current_ui.finish_success()
 		set_process(false)
 	elif time < 0.0:

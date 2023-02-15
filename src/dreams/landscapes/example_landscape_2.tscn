@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfuqxq3msr3pe"]
+[gd_scene load_steps=23 format=3 uid="uid://dfuqxq3msr3pe"]
 
 [ext_resource type="Script" path="res://src/dreams/landscape.gd" id="1_2vh6n"]
 [ext_resource type="PackedScene" uid="uid://ncr0xexh7hvh" path="res://src/character/punk.tscn" id="2_gkogx"]
@@ -7,11 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://cxixytbiav505" path="res://src/dreams/modules/example_path_3.tscn" id="5_2d0r3"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="6_bjfki"]
 [ext_resource type="Script" path="res://src/dreams/synchronizer.gd" id="6_fbhbc"]
-[ext_resource type="Script" path="res://src/quicktimes/action_key_press.gd" id="7_ykwoe"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="7_tyap7"]
 
-[sub_resource type="Resource" id="Resource_2bw3v"]
-script = ExtResource("7_ykwoe")
-key = 32
+[sub_resource type="InputEventKey" id="InputEventKey_w1jjp"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yb1ec"]
+load_path = "res://.godot/imported/key_w.png-30ba4a3146b7b67016047cf68789399c.ctex"
+
+[sub_resource type="Resource" id="Resource_7acyl"]
+script = ExtResource("7_tyap7")
+mode = 1
+increase = 0.3
+decrease = 0.5
+indicator = SubResource("CompressedTexture2D_yb1ec")
+event = SubResource("InputEventKey_w1jjp")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bkf5r"]
 
@@ -85,7 +97,8 @@ next_module = NodePath("../Example Path 3")
 [node name="QuickTimeEvent" type="Area3D" parent="Example Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.998459, 0.98927, -8.51019)
 script = ExtResource("6_bjfki")
-sequence = Array[Resource("res://src/quicktimes/action.gd")]([SubResource("Resource_2bw3v")])
+time = 1.5
+sequence = Array[ExtResource("7_tyap7")]([SubResource("Resource_7acyl")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Example Path/QuickTimeEvent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.987416, -0.974577, 8.31614)

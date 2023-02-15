@@ -3,23 +3,23 @@
 [ext_resource type="Script" path="res://src/management/dream_viewport.gd" id="1_tptqg"]
 [ext_resource type="Shader" path="res://src/management/dream_viewport.gdshader" id="2_asc24"]
 
-[sub_resource type="World3D" id="World3D_pynkh"]
+[sub_resource type="World3D" id="World3D_41x4v"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cisv3"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t5g82"]
 seed = 5
 frequency = 0.002
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rmowf"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_47p1i"]
 width = 1024
 height = 1024
 seamless = true
-noise = SubResource("FastNoiseLite_cisv3")
+noise = SubResource("FastNoiseLite_t5g82")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_invp7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbicf"]
 shader = ExtResource("2_asc24")
 shader_parameter/border_color = Color(0.878431, 0.513726, 1, 1)
 shader_parameter/progress = 0.5
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_rmowf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_47p1i")
 
 [node name="Dream Viewport" type="Control"]
 layout_mode = 3
@@ -33,11 +33,11 @@ script = ExtResource("1_tptqg")
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
 own_world_3d = true
-world_3d = SubResource("World3D_pynkh")
+world_3d = SubResource("World3D_41x4v")
 
 [node name="Composition" type="ColorRect" parent="."]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_invp7")
+material = SubResource("ShaderMaterial_dbicf")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -9,7 +9,6 @@ var _dream: Landscape
 
 
 func _ready() -> void:
-	# For some reason automatic updating does not work
 	vp.size = size
 	resized.connect(
 		func _on_size_changed():
@@ -19,6 +18,14 @@ func _ready() -> void:
 	composition.material = shader
 	shader.set_shader_parameter("vp", vp.get_texture())
 	shader.set_shader_parameter("progress", 0.0)
+
+
+func _input(event: InputEvent) -> void:
+	vp.push_input(event)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	vp.push_unhandled_input(event)
 
 
 func set_dream(dream: Node) -> void:

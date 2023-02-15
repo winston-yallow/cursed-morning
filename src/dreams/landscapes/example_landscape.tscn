@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvdxgmqcnj5mt"]
+[gd_scene load_steps=24 format=3 uid="uid://bvdxgmqcnj5mt"]
 
 [ext_resource type="Script" path="res://src/dreams/landscape.gd" id="1_qrb4c"]
 [ext_resource type="PackedScene" uid="uid://ncr0xexh7hvh" path="res://src/character/punk.tscn" id="2_c6pc7"]
@@ -7,51 +7,63 @@
 [ext_resource type="PackedScene" uid="uid://b7p62x02axg20" path="res://src/dreams/modules/example_path_2.tscn" id="4_74k4o"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="6_haf3n"]
 [ext_resource type="Script" path="res://src/dreams/synchronizer.gd" id="6_ymxlo"]
-[ext_resource type="Script" path="res://src/quicktimes/action_key_press.gd" id="7_y5ql2"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="7_yshf0"]
 
-[sub_resource type="Resource" id="Resource_al8nd"]
-script = ExtResource("7_y5ql2")
-key = 87
+[sub_resource type="InputEventKey" id="InputEventKey_48u80"]
+device = -1
+keycode = 65
+unicode = 97
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_taj3m"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7aamg"]
+load_path = "res://.godot/imported/key_a.png-26a3f1f7b0720e621a499d1e2e61eb94.ctex"
 
-[sub_resource type="Gradient" id="Gradient_83hf2"]
+[sub_resource type="Resource" id="Resource_yufsk"]
+script = ExtResource("7_yshf0")
+mode = 0
+increase = 1.0
+decrease = 1.0
+indicator = SubResource("CompressedTexture2D_7aamg")
+event = SubResource("InputEventKey_48u80")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j7dcv"]
+
+[sub_resource type="Gradient" id="Gradient_wsf3y"]
 offsets = PackedFloat32Array(0, 0.484848, 1)
 colors = PackedColorArray(0.118847, 0.111775, 0.285156, 1, 0.795412, 0.225495, 0.835938, 1, 1, 0.785476, 0.988876, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_sk3tw"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nbehp"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o4iog"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o4mnj"]
 width = 1024
 height = 1024
 seamless = true
-color_ramp = SubResource("Gradient_83hf2")
-noise = SubResource("FastNoiseLite_sk3tw")
+color_ramp = SubResource("Gradient_wsf3y")
+noise = SubResource("FastNoiseLite_nbehp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq1ln"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f6pg"]
 albedo_color = Color(0.505882, 0.65098, 0.768627, 1)
-albedo_texture = SubResource("NoiseTexture2D_o4iog")
+albedo_texture = SubResource("NoiseTexture2D_o4mnj")
 uv1_scale = Vector3(3, 3, 3)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_h57ee"]
-material = SubResource("StandardMaterial3D_bq1ln")
+[sub_resource type="PlaneMesh" id="PlaneMesh_wg6y2"]
+material = SubResource("StandardMaterial3D_0f6pg")
 size = Vector2(100, 100)
 
-[sub_resource type="BoxMesh" id="BoxMesh_cwdmf"]
+[sub_resource type="BoxMesh" id="BoxMesh_ajm3r"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_73ax7"]
+[sub_resource type="SphereMesh" id="SphereMesh_itq31"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_pvuib"]
+[sub_resource type="BoxMesh" id="BoxMesh_584tu"]
 size = Vector3(5, 3, 1)
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ufe66"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_let8i"]
 
-[sub_resource type="Sky" id="Sky_3arkr"]
-sky_material = SubResource("PhysicalSkyMaterial_ufe66")
+[sub_resource type="Sky" id="Sky_gehme"]
+sky_material = SubResource("PhysicalSkyMaterial_let8i")
 
-[sub_resource type="Environment" id="Environment_vf153"]
+[sub_resource type="Environment" id="Environment_1u5mg"]
 background_mode = 2
-sky = SubResource("Sky_3arkr")
+sky = SubResource("Sky_gehme")
 
 [node name="Example Landscape" type="Node3D"]
 script = ExtResource("1_qrb4c")
@@ -83,13 +95,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
 next_module = NodePath("../Example Path 3")
 
 [node name="QuickTimeEvent" type="Area3D" parent="Example Path 2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7378, 0.889828, -3.20973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55465, 0.889828, -7.89904)
 script = ExtResource("6_haf3n")
-sequence = Array[Resource("res://src/quicktimes/action.gd")]([SubResource("Resource_al8nd")])
+time = 2.5
+sequence = Array[ExtResource("7_yshf0")]([SubResource("Resource_yufsk")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Example Path 2/QuickTimeEvent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69909, -0.868349, 4.30741)
-shape = SubResource("SphereShape3D_taj3m")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25276, -0.868348, 10.6293)
+shape = SubResource("SphereShape3D_j7dcv")
 
 [node name="Example Path 3" parent="." instance=ExtResource("3_reqvk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -16)
@@ -100,67 +113,67 @@ script = ExtResource("6_ymxlo")
 [node name="World" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="World"]
-mesh = SubResource("PlaneMesh_h57ee")
+mesh = SubResource("PlaneMesh_wg6y2")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -2)
-mesh = SubResource("BoxMesh_cwdmf")
+mesh = SubResource("BoxMesh_ajm3r")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -6)
-mesh = SubResource("BoxMesh_cwdmf")
+mesh = SubResource("BoxMesh_ajm3r")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -9)
-mesh = SubResource("BoxMesh_cwdmf")
+mesh = SubResource("BoxMesh_ajm3r")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -7)
-mesh = SubResource("BoxMesh_cwdmf")
+mesh = SubResource("BoxMesh_ajm3r")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
-mesh = SubResource("BoxMesh_cwdmf")
+mesh = SubResource("BoxMesh_ajm3r")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -17)
-mesh = SubResource("BoxMesh_cwdmf")
+mesh = SubResource("BoxMesh_ajm3r")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -13)
-mesh = SubResource("SphereMesh_73ax7")
+mesh = SubResource("SphereMesh_itq31")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -17)
-mesh = SubResource("SphereMesh_73ax7")
+mesh = SubResource("SphereMesh_itq31")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -19)
-mesh = SubResource("SphereMesh_73ax7")
+mesh = SubResource("SphereMesh_itq31")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -13)
-mesh = SubResource("SphereMesh_73ax7")
+mesh = SubResource("SphereMesh_itq31")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35232, -0.749835, -20.6405)
-mesh = SubResource("BoxMesh_pvuib")
+mesh = SubResource("BoxMesh_584tu")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="World"]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.47862, 1.5, -19.6033)
-mesh = SubResource("BoxMesh_pvuib")
+mesh = SubResource("BoxMesh_584tu")
 skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -168,4 +181,4 @@ transform = Transform3D(-0.762318, -0.185483, 0.620054, -1.86264e-08, 0.958053, 
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vf153")
+environment = SubResource("Environment_1u5mg")
