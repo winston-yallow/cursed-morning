@@ -6,6 +6,7 @@ const ActionUIScene := preload("action_ui.tscn")
 const ActionUI := preload("action_ui.gd")
 
 @export var time := 1.0
+@export var forward_fails := true
 @export var sequence: Array[Action]
 
 var _finished := false
@@ -61,7 +62,8 @@ func _process(delta: float) -> void:
 	elif time < 0.0:
 		_current_ui.finish_failure()
 		set_process(false)
-		EventBus.quicktime_failed.emit()
+		if forward_fails:
+			EventBus.quicktime_failed.emit()
 
 
 func _create_action_ui(action: Action) -> ActionUI:
