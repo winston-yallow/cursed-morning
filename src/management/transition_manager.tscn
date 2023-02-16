@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1hponrydw1yi"]
+[gd_scene load_steps=8 format=3 uid="uid://c1hponrydw1yi"]
 
 [ext_resource type="Script" path="res://src/management/transition_manager.gd" id="1_30u6i"]
 [ext_resource type="PackedScene" uid="uid://c5x56plqlovpl" path="res://src/quicktimes/snooze.tscn" id="2_j0ae8"]
 [ext_resource type="FontFile" uid="uid://dex3afruterfj" path="res://src/fonts/e1234_italic.ttf" id="3_fi5m8"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="4_3c8og"]
 [ext_resource type="Shader" path="res://src/management/ui_blur.gdshader" id="4_jjdfs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2wyfr"]
@@ -46,6 +47,89 @@ offset_right = -16.0
 offset_bottom = 71.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_prfhy")
+
+[node name="SnoozeLabels" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(222, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -238.0
+offset_top = 81.0
+offset_right = -16.0
+offset_bottom = 101.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="Snooze3" type="Panel" parent="CanvasLayer/SnoozeLabels"]
+material = SubResource("ShaderMaterial_2wyfr")
+custom_minimum_size = Vector2(67, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prfhy")
+
+[node name="SnoozeLabel3" type="Label" parent="CanvasLayer/SnoozeLabels/Snooze3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_3c8og")
+theme_override_font_sizes/font_size = 14
+text = "SNOOZE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacing" type="Control" parent="CanvasLayer/SnoozeLabels"]
+layout_mode = 2
+size_flags_horizontal = 7
+
+[node name="Snooze2" type="Panel" parent="CanvasLayer/SnoozeLabels"]
+material = SubResource("ShaderMaterial_2wyfr")
+custom_minimum_size = Vector2(67, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prfhy")
+
+[node name="SnoozeLabel2" type="Label" parent="CanvasLayer/SnoozeLabels/Snooze2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_3c8og")
+theme_override_font_sizes/font_size = 14
+text = "SNOOZE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacing2" type="Control" parent="CanvasLayer/SnoozeLabels"]
+layout_mode = 2
+size_flags_horizontal = 7
+
+[node name="Snooze1" type="Panel" parent="CanvasLayer/SnoozeLabels"]
+material = SubResource("ShaderMaterial_2wyfr")
+custom_minimum_size = Vector2(67, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prfhy")
+
+[node name="SnoozeLabel1" type="Label" parent="CanvasLayer/SnoozeLabels/Snooze1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_3c8og")
+theme_override_font_sizes/font_size = 14
+text = "SNOOZE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Clock" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
