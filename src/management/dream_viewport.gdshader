@@ -1,6 +1,10 @@
 shader_type canvas_item;
 
-const float max_dist = sqrt(2.0) / 2.0;
+// Using an expression here doesn't work in godot 4.0.rc2 with
+// the code "sqrt(2.0) / 2.0" so I pre-calculated the value.
+// The original error message was: "Expected constant expression."
+// TODO: Report as issue on github
+const float max_dist = 0.7071067812;
 
 const float border_start = 0.005;
 const float border_end = 0.003;

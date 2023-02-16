@@ -62,7 +62,7 @@ func _handle_motion(external_event: InputEventMouseMotion) -> void:
 	var external_velocity: Vector2 = external_event.velocity
 	var desired_velocity: Vector2 = event.velocity
 	if external_velocity.length_squared() >= desired_velocity.length_squared():
-		var angle := abs(desired_velocity.angle_to(external_velocity))
+		var angle: float = abs(desired_velocity.angle_to(external_velocity))
 		if angle < MOTION_MAX_ANGLE:
 			if mode == MODE.DISCRETE:
 				_advance(increase)

@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	progress = offset / _curve.get_baked_length()
 	
 	# Calculate new positions
-	var capped_offset := min(offset, _curve.get_baked_length())
+	var capped_offset: float = min(offset, _curve.get_baked_length())
 	var before := to_global(_curve.sample_baked(capped_offset - 0.1))
 	var after := to_global(_curve.sample_baked(capped_offset + 0.1))
 	var dir := before.direction_to(after)
