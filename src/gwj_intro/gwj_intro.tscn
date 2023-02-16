@@ -1,0 +1,216 @@
+[gd_scene load_steps=11 format=3 uid="uid://dntykpqkevk5t"]
+
+[ext_resource type="Texture2D" uid="uid://e2xvkjtad857" path="res://src/gwj_intro/wallpaper.png" id="1_ciwhc"]
+[ext_resource type="Script" path="res://src/gwj_intro/gwj_intro.gd" id="1_h51qp"]
+[ext_resource type="Texture2D" uid="uid://c8j3nln4m0hu8" path="res://src/gwj_intro/cards.png" id="2_sb8k2"]
+[ext_resource type="Texture2D" uid="uid://cy0ve4gog3ik3" path="res://src/gwj_intro/theme.png" id="3_8hbre"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="4_cj8ws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ssub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj1s7"]
+bg_color = Color(0.980392, 0.380392, 0.286275, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Animation" id="Animation_vvy8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Wallpaper:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Wallpaper:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Content:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Content:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ufiuw"]
+resource_name = "intro"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Wallpaper:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Wallpaper:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Content:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.8, 3.2, 7.8, 8.2),
+"transitions": PackedFloat32Array(-2, 1, 1, -2),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, 0), Vector2(0, 0), Vector2(0, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Content:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.8, 3.2, 7.8, 8.2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"load_menu"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fg7h"]
+_data = {
+"RESET": SubResource("Animation_vvy8c"),
+"intro": SubResource("Animation_ufiuw")
+}
+
+[node name="GWJ Intro" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.133333, 0.25098, 1)
+script = ExtResource("1_h51qp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wallpaper" type="Sprite2D" parent="Control"]
+texture = ExtResource("1_ciwhc")
+
+[node name="Content" type="Node2D" parent="Control"]
+metadata/_edit_group_ = true
+
+[node name="Cards" type="Sprite2D" parent="Control/Content"]
+position = Vector2(0, 102)
+texture = ExtResource("2_sb8k2")
+
+[node name="Theme" type="Sprite2D" parent="Control/Content"]
+position = Vector2(0, -151)
+texture = ExtResource("3_8hbre")
+
+[node name="SkipLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -56.0
+offset_right = -20.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.980392, 0.380392, 0.286275, 1)
+theme_override_fonts/font = ExtResource("4_cj8ws")
+theme_override_font_sizes/font_size = 30
+text = "ESC to skip"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 2)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -17.0
+offset_right = -20.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_0ssub")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dj1s7")
+max_value = 1.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "intro"
+libraries = {
+"": SubResource("AnimationLibrary_3fg7h")
+}
