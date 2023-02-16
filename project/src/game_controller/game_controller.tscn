@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1hponrydw1yi"]
+[gd_scene load_steps=8 format=3 uid="uid://uobmpubcosif"]
 
-[ext_resource type="Script" path="res://src/management/transition_manager.gd" id="1_30u6i"]
-[ext_resource type="PackedScene" uid="uid://c5x56plqlovpl" path="res://src/quicktimes/snooze.tscn" id="2_j0ae8"]
-[ext_resource type="FontFile" uid="uid://dex3afruterfj" path="res://src/fonts/e1234_italic.ttf" id="3_fi5m8"]
-[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="4_3c8og"]
-[ext_resource type="Shader" path="res://src/management/ui_blur.gdshader" id="4_jjdfs"]
+[ext_resource type="Script" path="res://src/game_controller/game_controller.gd" id="1_uib3a"]
+[ext_resource type="PackedScene" uid="uid://c5x56plqlovpl" path="res://src/quicktimes/snooze.tscn" id="2_uanbr"]
+[ext_resource type="Shader" path="res://src/game_controller/ui_blur.gdshader" id="3_tbatg"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="4_rm7vl"]
+[ext_resource type="FontFile" uid="uid://dex3afruterfj" path="res://src/fonts/e1234_italic.ttf" id="5_7c1ci"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2wyfr"]
-shader = ExtResource("4_jjdfs")
+shader = ExtResource("3_tbatg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prfhy"]
 bg_color = Color(0, 0, 0, 0.196078)
@@ -21,19 +21,19 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="Transition Manager" type="Control"]
+[node name="Game Controller" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_30u6i")
+script = ExtResource("1_uib3a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="Snooze" parent="CanvasLayer" instance=ExtResource("2_j0ae8")]
+[node name="Snooze" parent="CanvasLayer" instance=ExtResource("2_uanbr")]
 unique_name_in_owner = true
 
 [node name="TimePanel" type="Panel" parent="CanvasLayer"]
@@ -75,7 +75,7 @@ anchor_bottom = 1.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_3c8og")
+theme_override_fonts/font = ExtResource("4_rm7vl")
 theme_override_font_sizes/font_size = 14
 text = "SNOOZE"
 horizontal_alignment = 1
@@ -100,7 +100,7 @@ anchor_bottom = 1.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_3c8og")
+theme_override_fonts/font = ExtResource("4_rm7vl")
 theme_override_font_sizes/font_size = 14
 text = "SNOOZE"
 horizontal_alignment = 1
@@ -125,7 +125,7 @@ anchor_bottom = 1.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_3c8og")
+theme_override_fonts/font = ExtResource("4_rm7vl")
 theme_override_font_sizes/font_size = 14
 text = "SNOOZE"
 horizontal_alignment = 1
@@ -141,7 +141,7 @@ offset_top = 21.0
 offset_right = -73.0
 offset_bottom = 71.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("3_fi5m8")
+theme_override_fonts/font = ExtResource("5_7c1ci")
 theme_override_font_sizes/font_size = 40
 text = "08:00"
 vertical_alignment = 2
@@ -158,7 +158,7 @@ offset_right = -25.0
 offset_bottom = 67.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.701961, 0.701961, 0.701961, 1)
-theme_override_fonts/font = ExtResource("3_fi5m8")
+theme_override_fonts/font = ExtResource("5_7c1ci")
 theme_override_font_sizes/font_size = 20
 text = ":00"
 horizontal_alignment = 1

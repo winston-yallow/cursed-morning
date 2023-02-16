@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckxvfogh4s05j"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://src/management/dream_viewport.gd" id="1_tptqg"]
-[ext_resource type="Shader" path="res://src/management/dream_viewport.gdshader" id="2_asc24"]
+[ext_resource type="Script" path="res://src/game_controller/dream_viewport.gd" id="1_tptqg"]
+[ext_resource type="Shader" path="res://src/game_controller/dream_viewport.gdshader" id="2_asc24"]
 
 [sub_resource type="World3D" id="World3D_41x4v"]
 
