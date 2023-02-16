@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://ncr0xexh7hvh"]
 
 [ext_resource type="PackedScene" uid="uid://krgcjffdav" path="res://src/character/punk.gltf" id="1_odhgl"]
-[ext_resource type="Script" path="res://src/character/punk.gd" id="2_sglif"]
+[ext_resource type="Script" path="res://src/character/punk.gd" id="2_0u6rb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bf0bd"]
 radius = 0.261128
 
 [node name="Character" instance=ExtResource("1_odhgl")]
-script = ExtResource("2_sglif")
+script = ExtResource("2_0u6rb")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
 collision_mask = 0
