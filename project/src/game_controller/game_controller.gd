@@ -22,8 +22,8 @@ var _viewports: Array[DreamViewport] = []
 
 
 func _ready() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	#get_tree().root.mode = Window.MODE_MAXIMIZED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().root.mode = Window.MODE_MAXIMIZED
 	
 	# Load first scene
 	var dream := preload("res://src/dreams/special_landscapes/first.tscn").instantiate()

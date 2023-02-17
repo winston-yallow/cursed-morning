@@ -59,8 +59,8 @@ func _handle_action(external_event: InputEvent) -> void:
 
 
 func _handle_motion(external_event: InputEventMouseMotion) -> void:
-	var external_velocity: Vector2 = external_event.velocity
-	var desired_velocity: Vector2 = event.velocity
+	var external_velocity: Vector2 = external_event.relative
+	var desired_velocity: Vector2 = event.relative
 	if external_velocity.length_squared() >= desired_velocity.length_squared():
 		var angle: float = abs(desired_velocity.angle_to(external_velocity))
 		if angle < MOTION_MAX_ANGLE:
