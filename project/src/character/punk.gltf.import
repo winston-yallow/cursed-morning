@@ -28,5 +28,32 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Black": {
+"use_external/enabled": true,
+"use_external/path": "res://src/character/materials/Black.tres"
+},
+"Brown": {
+"use_external/enabled": true,
+"use_external/path": "res://src/character/materials/Brown.tres"
+},
+"Grey": {
+"use_external/enabled": true,
+"use_external/path": "res://src/character/materials/Grey.tres"
+},
+"Hair_Brown": {
+"use_external/enabled": true,
+"use_external/path": "res://src/character/materials/Hair_Brown.tres"
+},
+"Pink": {
+"use_external/enabled": true,
+"use_external/path": "res://src/character/materials/Pink.tres"
+},
+"Skin": {
+"use_external/enabled": true,
+"use_external/path": "res://src/character/materials/Skin.tres"
+}
+}
+}
 gltf/embedded_image_handling=1
