@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc8so30nyfj3n"]
+[gd_scene load_steps=6 format=3 uid="uid://bc8so30nyfj3n"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_p0yly"]
-[ext_resource type="PackedScene" uid="uid://5b8m2u3j6jsc" path="res://src/dreams/modules/example_path.tscn" id="2_xghsv"]
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_turgw"]
+
+[sub_resource type="Curve3D" id="Curve3D_pgqms"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -16),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_ney8d"]
 size = Vector3(0.2, 0.2, 5)
@@ -10,17 +17,25 @@ size = Vector3(0.2, 0.2, 5)
 
 [node name="Forward" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
 script = ExtResource("1_p0yly")
-first_module = NodePath("Example Path")
-exit_front = NodePath("Example Path")
+first_module = NodePath("ModulePath")
+exit_front = NodePath("ModulePath")
 
-[node name="Example Path" parent="." instance=ExtResource("2_xghsv")]
+[node name="ModulePath" type="Node3D" parent="."]
+script = ExtResource("2_turgw")
+
+[node name="Path3D" type="Path3D" parent="ModulePath"]
+curve = SubResource("Curve3D_pgqms")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -0.827674, 0, -2.48845)
+transform = Transform3D(0.999999, 0, 0.00122213, 0, 1, 0, -0.00122213, 0, 0.999999, -0.074477, 4.76837e-07, -2.96641)
 mesh = SubResource("BoxMesh_ney8d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -2.22554, 9.53674e-07, -7.37037)
+transform = Transform3D(0.999972, 0, 0.00747034, 0, 1, 0, -0.00747034, 0, 0.999972, -0.100167, 1.43051e-06, -8.27988)
+mesh = SubResource("BoxMesh_ney8d")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999972, 0, 0.00747034, 0, 1, 0, -0.00747034, 0, 0.999972, -0.0976217, 9.53674e-07, -13.5104)
 mesh = SubResource("BoxMesh_ney8d")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
