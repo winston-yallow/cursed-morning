@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc8so30nyfj3n"]
+[gd_scene load_steps=14 format=3 uid="uid://bc8so30nyfj3n"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_p0yly"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_turgw"]
 [ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="3_845ek"]
+[ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="4_hxs35"]
+[ext_resource type="Texture2D" uid="uid://cwoocojkf5b8p" path="res://src/quicktimes/images/direction_e.png" id="5_ccwc8"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="6_3c75w"]
 
 [sub_resource type="Curve3D" id="Curve3D_pgqms"]
 _data = {
@@ -17,6 +20,19 @@ size = Vector3(0.2, 0.2, 5)
 [sub_resource type="SphereMesh" id="SphereMesh_avq7v"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uoc65"]
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_nla0v"]
+relative = Vector2(5, 0)
+
+[sub_resource type="Resource" id="Resource_5uqd5"]
+script = ExtResource("6_3c75w")
+mode = 0
+increase = 5.0
+decrease = 3.0
+indicator = ExtResource("5_ccwc8")
+event = SubResource("InputEventMouseMotion_nla0v")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ith6"]
 
 [node name="Forward" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
 script = ExtResource("1_p0yly")
@@ -48,6 +64,10 @@ mesh = SubResource("SphereMesh_avq7v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -11)
 mesh = SubResource("BoxMesh_uoc65")
 
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -11)
+mesh = SubResource("BoxMesh_uoc65")
+
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.993091, 1.09836, -10.9059)
 pixel_size = 0.0025
@@ -56,3 +76,12 @@ text = "This is an example!"
 font = ExtResource("3_845ek")
 font_size = 110
 outline_size = 15
+
+[node name="QuickTimeEvent" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -11)
+script = ExtResource("4_hxs35")
+sequence = Array[ExtResource("6_3c75w")]([SubResource("Resource_5uqd5")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickTimeEvent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 9)
+shape = SubResource("SphereShape3D_8ith6")
