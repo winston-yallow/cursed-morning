@@ -3,6 +3,8 @@ extends Module
 
 
 const SPEED := 5.0
+const CAMERA_POSITION := Vector3.UP * 1.7 + Vector3.FORWARD * 1.7
+const CAMERA_TARGET := Vector3.UP * 1.3
 
 @export_node_path("Module") var next_module: NodePath
 
@@ -33,8 +35,9 @@ func _process(delta: float) -> void:
 	character.rotation.y = -dir_2d.angle() + TAU * 0.25
 	character.position = to_global(_curve.sample_baked(offset))
 	# TODO: Paths for camera positon too?
-	camera_position.position = character.position + Vector3.UP * 1.5 + Vector3.BACK * 2.3
-	camera_target.position = character.position + Vector3.UP * 1.0
+	# Calculate camera positons relative to character
+	camera_position.position = character.to_global(CAMERA_POSITION)
+	camera_target.position = character.to_global(CAMERA_TARGET)
 	
 	# Switch to next module if we reached the end
 	if offset >= _curve.get_baked_length():
