@@ -18,8 +18,8 @@ func _process(delta: float) -> void:
 	var adjusted_dir := target_from.position - target_to.position
 	var axis_horizontal := Vector3.UP
 	var axis_vertical := Vector3.UP.cross(adjusted_dir).normalized()
-	adjusted_dir = adjusted_dir.rotated(axis_horizontal, InputManager.direction.x * MAX_ANGLE)
-	adjusted_dir = adjusted_dir.rotated(axis_vertical, InputManager.direction.y * MAX_ANGLE)
+	#adjusted_dir = adjusted_dir.rotated(axis_horizontal, InputManager.direction.x * MAX_ANGLE)
+	#adjusted_dir = adjusted_dir.rotated(axis_vertical, InputManager.direction.y * MAX_ANGLE)
 	var adjusted_from := target_to.position + adjusted_dir
 	current_from = current_from.lerp(adjusted_from, delta * speed)
 	look_at_from_position(current_from, current_to)
