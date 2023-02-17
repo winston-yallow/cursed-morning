@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://yoeb40ocfsva"]
+
+[ext_resource type="Script" path="res://src/dreams/landscape.gd" id="1_wn1nv"]
+[ext_resource type="PackedScene" uid="uid://ncr0xexh7hvh" path="res://src/character/punk.tscn" id="2_4ubmk"]
+[ext_resource type="Script" path="res://src/camera/smooth_camera.gd" id="3_xduht"]
+
+[node name="Example Landscape" type="Node3D" node_paths=PackedStringArray("camera", "character", "first_module", "camera_position", "camera_target")]
+script = ExtResource("1_wn1nv")
+camera = NodePath("SmoothCamera")
+character = NodePath("Character")
+first_module = NodePath("")
+camera_position = NodePath("CameraPosition")
+camera_target = NodePath("CameraTarget")
+
+[node name="Character" parent="." instance=ExtResource("2_4ubmk")]
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.3)
+
+[node name="CameraTarget" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SmoothCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target_from", "target_to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.3)
+script = ExtResource("3_xduht")
+target_from = NodePath("../CameraPosition")
+target_to = NodePath("../CameraTarget")

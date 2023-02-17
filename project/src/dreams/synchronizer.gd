@@ -17,7 +17,8 @@ func _ready() -> void:
 	module.ignore_missing_next = true
 	module.activated.connect(start_sync)
 	set_process(false)
-	WorkerThreadPool.add_task(_generate_dream)
+	_generate_dream()
+	#WorkerThreadPool.add_task(_generate_dream)
 
 
 func _process(_delta: float) -> void:

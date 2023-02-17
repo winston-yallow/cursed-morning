@@ -4,6 +4,10 @@ extends RefCounted
 
 signal finished(node: Landscape)
 
+const CHUNK_STARTERS_PATH := "res://src/dreams/chunks_starters"
+const PROCEDURAL_ITEMS_PATH := "res://src/dreams/procedural"
+const CHARACTER_PATH := "res://src/character/punk.tscn"
+
 const FRONT = 0b10000
 const LEFT = 0b01000
 const RIGHT = 0b00100
@@ -36,7 +40,7 @@ var _chunk_defs: Array[ChunkDefinition] = []
 
 func run(sync_module: Module) -> Landscape:
 	# Pick start chunk
-	var start_directory := "res://src/dreams/chunks_starters"
+	var start_directory := CHUNK_STARTERS_PATH
 	var start_dir := DirAccess.open(start_directory)
 	var possible: Array[PackedScene] = []
 	if start_dir:
@@ -52,7 +56,7 @@ func run(sync_module: Module) -> Landscape:
 	# Generate chunk definitions
 	_chunk_defs.clear()
 	var theme: String = start.themes.pick_random()
-	var proc_directory := "res://src/dreams/chunks_procedural".path_join(theme)
+	var proc_directory := PROCEDURAL_ITEMS_PATH.path_join(theme)
 	var proc_dir := DirAccess.open(proc_directory)
 	if proc_dir:
 		for f in proc_dir.get_files():
@@ -63,30 +67,14 @@ func run(sync_module: Module) -> Landscape:
 		push_error("Can't access chunk dir: '%s'" % proc_directory)
 	
 	# Generate landscape
-	var root := Landscape.new()
+	var landsacpe_path := PROCEDURAL_ITEMS_PATH.path_join(theme + ".tscn")
+	var landscape_scene: PackedScene = load(landsacpe_path)
+	var root: Landscape = landscape_scene.instantiate()
 	_allow_up = true
 	_allow_down = true
 	_add_trunk_to(root, start, 5)
 	
-	var character := preload("res://src/character/punk.tscn").instantiate()
-	root.add_child(character)
-	root.character = character
-	
-	var cam_position := Marker3D.new()
-	root.add_child(cam_position)
-	root.camera_position = cam_position
-	
-	var cam_target := Marker3D.new()
-	root.add_child(cam_target)
-	root.camera_target = cam_target
-	
-	var cam := SmoothCamera.new()
-	root.add_child(cam)
-	root.camera = cam
-	cam.target_from = cam_position
-	cam.target_to = cam_target
-	
-	root.first_module = root.get_child(0).first_module
+	root.first_module = start.first_module
 	
 	return root
 

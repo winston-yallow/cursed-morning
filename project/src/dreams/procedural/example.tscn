@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkx8lj4lp7hid"]
+
+[ext_resource type="PackedScene" uid="uid://yoeb40ocfsva" path="res://src/dreams/special_landscapes/base.tscn" id="1_exjvu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j7oab"]
+sky_top_color = Color(0.682353, 0.470588, 0.741176, 1)
+sky_horizon_color = Color(0.858824, 0.698039, 0.85098, 1)
+ground_bottom_color = Color(0.188235, 0.0862745, 0.164706, 1)
+ground_horizon_color = Color(0.560784, 0.290196, 0.505882, 1)
+
+[sub_resource type="Sky" id="Sky_clssf"]
+sky_material = SubResource("ProceduralSkyMaterial_j7oab")
+
+[sub_resource type="Environment" id="Environment_dy5r3"]
+background_mode = 2
+sky = SubResource("Sky_clssf")
+
+[node name="Example" instance=ExtResource("1_exjvu")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+environment = SubResource("Environment_dy5r3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" index="0"]
+transform = Transform3D(0.814247, -0.365804, 0.450765, 0, 0.776487, 0.630134, -0.580518, -0.513085, 0.632252, 0, 0, 0)
