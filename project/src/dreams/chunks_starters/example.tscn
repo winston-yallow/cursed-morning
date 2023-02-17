@@ -14,4 +14,4 @@ exit_front = NodePath("Example Path")
 next_module = NodePath("../Example Path")
 
 [node name="Example Path" parent="." instance=ExtResource("3_2ktis")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -6)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, -10)

@@ -36,7 +36,11 @@ transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, 
 mesh = SubResource("BoxMesh_mscb6")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.265422, 0, -0.964132, 0, 1, 0, 0.964132, 0, 0.265422, 0.380699, 1.90735e-06, -15.3618)
+transform = Transform3D(0.78042, 0, -0.625256, 0, 1, 0, 0.625256, 0, 0.78042, -0.482113, 1.90735e-06, -16.7542)
+mesh = SubResource("BoxMesh_mscb6")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.218689, 0, -0.975794, 0, 1, 0, 0.975794, 0, 0.218689, 3.55173, 1.90735e-06, -19.2647)
 mesh = SubResource("BoxMesh_mscb6")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
@@ -44,7 +48,7 @@ transform = Transform3D(0.984512, 0, -0.175315, 0, 1, 0, 0.175315, 0, 0.984512, 
 mesh = SubResource("BoxMesh_mscb6")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.000262082, 0, -1, 0, 1, 0, 1, 0, 0.000262082, 3.02569, -2.38419e-07, -16.0988)
+transform = Transform3D(0.000262082, 0, -1, 0, 1, 0, 1, 0, 0.000262082, 7.02569, -2.38419e-07, -20.0988)
 mesh = SubResource("BoxMesh_fwm4p")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]

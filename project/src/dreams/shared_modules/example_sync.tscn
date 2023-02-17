@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_240lg"]
 _data = {
-"points": PackedVector3Array(0, 0, 5, 0, 0, -5, 0, 0, 0, -4, 0, 0, 4, 0, 0, 6, 0, -6),
+"points": PackedVector3Array(0, 0, 6, 0, 0, -6, 0, 0, 0, -6, 0, 0, 6, 0, 0, 10, 0, -10),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -26,17 +26,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -3)
 mesh = SubResource("BoxMesh_dweu5")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04654, 0.5, -10.5899)
 mesh = SubResource("BoxMesh_dweu5")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0282, 0.5, -7.963)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4862, 0.5, -12.4578)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1092, 0.5, -13.5468)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0685, 0.5, -12.8621)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21154, 0.5, -10.9408)
 mesh = SubResource("BoxMesh_dweu5")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11217, 0.5, -7.79435)
 mesh = SubResource("BoxMesh_dweu5")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.663486, 0.5, -6.91607)
 mesh = SubResource("BoxMesh_dweu5")
