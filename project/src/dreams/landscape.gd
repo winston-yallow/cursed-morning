@@ -4,22 +4,15 @@ extends Node3D
 
 var sync_progress := 0.0
 
-
-func get_camera() -> SmoothCamera:
-	return %SmoothCamera
-
-
-func get_character() -> Node3D:
-	return %Character
-
-
-func get_first_module() -> Module:
-	return %FirstModule
+@export var camera: SmoothCamera
+@export var character: Punk
+@export var first_module: Module
+@export var camera_position: Marker3D
+@export var camera_target: Marker3D
 
 
 func startup() -> void:
-	var module: Module = %FirstModule
-	module.character = %Character
-	module.camera_position = %CameraPosition
-	module.camera_target = %CameraTarget
-	module.set_active(true)
+	first_module.character = character
+	first_module.camera_position = camera_position
+	first_module.camera_target = camera_target
+	first_module.set_active(true)

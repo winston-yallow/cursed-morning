@@ -17,9 +17,9 @@ func _ready() -> void:
 	module.ignore_missing_next = true
 	module.activated.connect(start_sync)
 	set_process(false)
+	WorkerThreadPool.add_task(_generate_dream)
 
 
-# TODO: Remove manual progress, use module instead
 func _process(_delta: float) -> void:
 	if module.progress >= 1.0:
 		transition_camera_theirs.queue_free()
@@ -28,11 +28,6 @@ func _process(_delta: float) -> void:
 
 
 func start_sync() -> void:
-	# TODO: We need to generate a new dream here
-	if "_2" in owner.scene_file_path:
-		dream = load("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
-	else:
-		dream = load("res://src/dreams/landscapes/example_landscape_2.tscn").instantiate()
 	dream.startup()
 	EventBus.transition.emit(dream)
 	
@@ -40,9 +35,9 @@ func start_sync() -> void:
 	transition_camera_ours = Camera3D.new()
 	transition_camera_theirs = Camera3D.new()
 	original_camera_ours = get_viewport().get_camera_3d()
-	original_camera_theirs = dream.get_camera()
+	original_camera_theirs = dream.camera
 	character_ours = module.character
-	character_theirs = dream.get_character()
+	character_theirs = dream.character
 	
 	# Activate cameras
 	character_ours.add_child(transition_camera_ours)
@@ -55,7 +50,7 @@ func start_sync() -> void:
 	set_process(true)
 	character_theirs.anim.play(character_ours.anim.current_animation)
 	character_theirs.anim.seek(character_ours.anim.current_animation_position, true)
-	dream.get_first_module().time = module.time
+	dream.first_module.time = module.time
 
 
 func update_sync(sync_progress: float) -> void:
@@ -67,3 +62,9 @@ func update_sync(sync_progress: float) -> void:
 	var interpolated := ours.interpolate_with(theirs, sync_progress)
 	transition_camera_ours.transform = interpolated
 	transition_camera_theirs.transform = interpolated
+
+
+func _generate_dream():
+	var gen := DreamGenerator.new()
+	var root := gen.run(module)
+	set.call_deferred("dream", root)

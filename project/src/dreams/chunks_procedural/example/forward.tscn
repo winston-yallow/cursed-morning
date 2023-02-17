@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc8so30nyfj3n"]
+
+[ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_p0yly"]
+[ext_resource type="PackedScene" uid="uid://5b8m2u3j6jsc" path="res://src/dreams/modules/example_path.tscn" id="2_xghsv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ney8d"]
+size = Vector3(0.2, 0.2, 5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_avq7v"]
+
+[node name="Forward" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
+script = ExtResource("1_p0yly")
+first_module = NodePath("Example Path")
+exit_front = NodePath("Example Path")
+
+[node name="Example Path" parent="." instance=ExtResource("2_xghsv")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -0.827674, 0, -2.48845)
+mesh = SubResource("BoxMesh_ney8d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -2.22554, 9.53674e-07, -7.37037)
+mesh = SubResource("BoxMesh_ney8d")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_avq7v")

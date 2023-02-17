@@ -24,8 +24,9 @@ var _viewports: Array[DreamViewport] = []
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	#get_tree().root.mode = Window.MODE_MAXIMIZED
+	
 	# Load first scene
-	var dream := preload("res://src/dreams/landscapes/example_landscape.tscn").instantiate()
+	var dream := preload("res://src/dreams/special_landscapes/first.tscn").instantiate()
 	dream.sync_progress = 1.0
 	dream.startup()
 	_create_vp(dream)

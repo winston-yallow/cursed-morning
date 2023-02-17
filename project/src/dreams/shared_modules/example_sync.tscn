@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck2mvt2c3as5k"]
+
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="1_vtmoo"]
+
+[sub_resource type="Curve3D" id="Curve3D_240lg"]
+_data = {
+"points": PackedVector3Array(0, 0, 5, 0, 0, -5, 0, 0, 0, -4, 0, 0, 4, 0, 0, 6, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_dweu5"]
+
+[node name="Example Sync" type="Node3D"]
+script = ExtResource("1_vtmoo")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_240lg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -2)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -3)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -5)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, -6)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -8)
+mesh = SubResource("BoxMesh_dweu5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -6)
+mesh = SubResource("BoxMesh_dweu5")
