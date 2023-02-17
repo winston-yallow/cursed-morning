@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc8so30nyfj3n"]
+[gd_scene load_steps=8 format=3 uid="uid://bc8so30nyfj3n"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_p0yly"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_turgw"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="3_845ek"]
 
 [sub_resource type="Curve3D" id="Curve3D_pgqms"]
 _data = {
@@ -14,6 +15,8 @@ point_count = 2
 size = Vector3(0.2, 0.2, 5)
 
 [sub_resource type="SphereMesh" id="SphereMesh_avq7v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uoc65"]
 
 [node name="Forward" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
 script = ExtResource("1_p0yly")
@@ -40,3 +43,16 @@ mesh = SubResource("BoxMesh_ney8d")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_avq7v")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -11)
+mesh = SubResource("BoxMesh_uoc65")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.993091, 1.09836, -10.9059)
+pixel_size = 0.0025
+billboard = 1
+text = "This is an example!"
+font = ExtResource("3_845ek")
+font_size = 110
+outline_size = 15
