@@ -43,3 +43,9 @@ func _process(delta: float) -> void:
 		var distance_unreached := offset - _curve.get_baked_length()
 		var ratio := distance_unreached / distance_desired
 		switch_to_next(delta * ratio)
+
+
+func get_end_point() -> Vector3:
+	# Not using _curve since we want this method to work before _ready
+	var curve: Curve3D = get_node(path_node).curve
+	return curve.get_baked_points()[curve.get_baked_points().size() - 1]

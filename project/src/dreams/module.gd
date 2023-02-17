@@ -40,3 +40,7 @@ func set_active(active: bool) -> void:
 	set_process_input(active)
 	if active:
 		activated.emit()
+
+
+func get_end_point() -> Vector3:
+	return Vector3.ZERO
