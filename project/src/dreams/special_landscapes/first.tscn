@@ -75,25 +75,20 @@ camera_position = NodePath("CameraPosition")
 camera_target = NodePath("CameraTarget")
 
 [node name="Character" parent="." instance=ExtResource("2_c6pc7")]
-unique_name_in_owner = true
 
 [node name="CameraPosition" type="Marker3D" parent="."]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.3)
 
 [node name="CameraTarget" type="Marker3D" parent="."]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="SmoothCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target_from", "target_to")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.3)
 script = ExtResource("3_ifl30")
 target_from = NodePath("../CameraPosition")
 target_to = NodePath("../CameraTarget")
 
 [node name="FirstModule" parent="." instance=ExtResource("3_reqvk")]
-unique_name_in_owner = true
 next_module = NodePath("../Example Path 2")
 
 [node name="Example Path 2" parent="." instance=ExtResource("4_74k4o")]
