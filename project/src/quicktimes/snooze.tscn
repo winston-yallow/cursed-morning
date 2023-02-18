@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5x56plqlovpl"]
+[gd_scene load_steps=15 format=3 uid="uid://c5x56plqlovpl"]
 
 [ext_resource type="Shader" path="res://src/quicktimes/snooze.gdshader" id="1_7euio"]
 [ext_resource type="Script" path="res://src/quicktimes/snooze.gd" id="1_r1wfo"]
 [ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="1_tcj16"]
+[ext_resource type="AudioStream" uid="uid://cw7rbl0g7edfg" path="res://src/quicktimes/audio/alarm.wav" id="4_m1jk2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iko34"]
 shader = ExtResource("1_7euio")
@@ -351,6 +352,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_kgiff")
 max_value = 1.0
 value = 0.5
 show_percentage = false
+
+[node name="Alarm" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_m1jk2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

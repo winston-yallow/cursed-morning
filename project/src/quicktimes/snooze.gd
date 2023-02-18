@@ -8,6 +8,7 @@ extends Control
 @onready var anim: AnimationPlayer = %AnimationPlayer
 @onready var shader: ShaderMaterial = %Label.material
 @onready var time_label: ProgressBar = %TimeLeft
+@onready var alarm: AudioStreamPlayer = %Alarm
 
 var _progress := 0.0
 var _time_left := 0.0
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 	if _time_left <= 0.0:
 		finish_fail()
 	time_label.value = _time_left / time
+	alarm.volume_db = lerp(-80.0 , 0.0, min((1.0 - _time_left / time) * 5.0, 1.0))
 	shader.set_shader_parameter("progress", _progress)
 
 
@@ -40,17 +42,21 @@ func start() -> void:
 	_time_left = time
 	shader.set_shader_parameter("progress", 0.0)
 	time_label.value = 0.0
+	alarm.volume_db = -80.0
+	alarm.play()
 	anim.play("show")
 	set_process(true)
 
 
 func finish_success() -> void:
 	_progress = 2.0
+	alarm.stop()
 	anim.play("success")
 	set_process(false)
 
 
 func finish_fail() -> void:
 	_progress = 2.0
+	alarm.stop()
 	anim.play("fail")
 	set_process(false)
