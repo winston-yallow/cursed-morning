@@ -2,6 +2,9 @@ class_name QuickTimeEvent
 extends Area3D
 
 
+signal succeded()
+signal failed()
+
 const ActionUIScene := preload("action_ui.tscn")
 const ActionUI := preload("action_ui.gd")
 
@@ -57,9 +60,11 @@ func _process(delta: float) -> void:
 	
 	# Check if we reached fail or success conditions
 	if _finished:
+		succeded.emit()
 		_current_ui.finish_success()
 		set_process(false)
 	elif time < 0.0:
+		failed.emit()
 		_current_ui.finish_failure()
 		set_process(false)
 		if forward_fails:
