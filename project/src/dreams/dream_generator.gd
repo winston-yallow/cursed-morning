@@ -45,6 +45,10 @@ func run(sync_module: Module) -> Landscape:
 	var possible: Array[PackedScene] = []
 	if start_dir:
 		for f in start_dir.get_files():
+			if not ".tscn" in f:
+				continue
+			if ".tscn.remap" in f:
+				f = f.trim_suffix('.remap')
 			var scn := load(start_directory.path_join(f))
 			var path := get_first_module_filepath(scn)
 			if path == sync_module.scene_file_path:
@@ -60,8 +64,10 @@ func run(sync_module: Module) -> Landscape:
 	var proc_dir := DirAccess.open(proc_directory)
 	if proc_dir:
 		for f in proc_dir.get_files():
-			if not f.ends_with("tscn"):
+			if not ".tscn" in f:
 				continue
+			if ".tscn.remap" in f:
+				f = f.trim_suffix('.remap')
 			var scn := load(proc_directory.path_join(f))
 			var def := ChunkDefinition.new(scn)
 			_chunk_defs.append(def)
