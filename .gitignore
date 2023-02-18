@@ -1,2 +1,9 @@
+# Directory used for exports
+/dist/
+
+# Used locally to work on assets and for editing screenshots/videos
+/assets/
+/media/
+
 # Godot 4+ specific ignores
 .godot/
