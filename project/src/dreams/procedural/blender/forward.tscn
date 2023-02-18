@@ -17,18 +17,33 @@ _data = {
 point_count = 2
 
 [sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_02cvf"]
-relative = Vector2(-5, 0)
+relative = Vector2(-3, 0)
 
 [sub_resource type="Resource" id="Resource_kraoi"]
 script = ExtResource("5_2x5vy")
 mode = 0
-increase = 8.0
+increase = 10.0
 decrease = 0.0
 direction = 3
 indicator = ExtResource("5_qqwmg")
 event = SubResource("InputEventMouseMotion_02cvf")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xqugy"]
+
+[sub_resource type="Animation" id="Animation_ybkny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.490799, -0.665891, -1.02434)]
+}
 
 [sub_resource type="Animation" id="Animation_vrqhr"]
 resource_name = "move"
@@ -46,7 +61,25 @@ tracks/0/keys = {
 "values": [Vector3(0.490799, -0.665891, -1.02434), Vector3(-20, 3, -1.024)]
 }
 
-[sub_resource type="Animation" id="Animation_ybkny"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sdwq"]
+_data = {
+"RESET": SubResource("Animation_ybkny"),
+"move": SubResource("Animation_vrqhr")
+}
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_mx3m2"]
+relative = Vector2(3, 0)
+
+[sub_resource type="Resource" id="Resource_i0u6j"]
+script = ExtResource("5_2x5vy")
+mode = 0
+increase = 10.0
+decrease = 0.0
+direction = 1
+indicator = ExtResource("7_8dcj8")
+event = SubResource("InputEventMouseMotion_mx3m2")
+
+[sub_resource type="Animation" id="Animation_tjd2k"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,26 +91,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.490799, -0.665891, -1.02434)]
+"values": [Vector3(0.155813, -0.85794, -1.03636)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sdwq"]
-_data = {
-"RESET": SubResource("Animation_ybkny"),
-"move": SubResource("Animation_vrqhr")
-}
-
-[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_mx3m2"]
-relative = Vector2(5, 0)
-
-[sub_resource type="Resource" id="Resource_i0u6j"]
-script = ExtResource("5_2x5vy")
-mode = 0
-increase = 8.0
-decrease = 0.0
-direction = 1
-indicator = ExtResource("7_8dcj8")
-event = SubResource("InputEventMouseMotion_mx3m2")
 
 [sub_resource type="Animation" id="Animation_eg1c7"]
 resource_name = "move"
@@ -95,7 +110,25 @@ tracks/0/keys = {
 "values": [Vector3(0.155813, -0.85794, -1.03636), Vector3(20, 3, -1.036)]
 }
 
-[sub_resource type="Animation" id="Animation_tjd2k"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkxc8"]
+_data = {
+"RESET": SubResource("Animation_tjd2k"),
+"move": SubResource("Animation_eg1c7")
+}
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_bruql"]
+relative = Vector2(0, -3)
+
+[sub_resource type="Resource" id="Resource_58vct"]
+script = ExtResource("5_2x5vy")
+mode = 0
+increase = 10.0
+decrease = 0.0
+direction = 0
+indicator = ExtResource("8_bx14c")
+event = SubResource("InputEventMouseMotion_bruql")
+
+[sub_resource type="Animation" id="Animation_lignw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -107,26 +140,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.155813, -0.85794, -1.03636)]
+"values": [Vector3(0.0755153, -0.232517, -1.32399)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkxc8"]
-_data = {
-"RESET": SubResource("Animation_tjd2k"),
-"move": SubResource("Animation_eg1c7")
-}
-
-[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_bruql"]
-relative = Vector2(0, -5)
-
-[sub_resource type="Resource" id="Resource_58vct"]
-script = ExtResource("5_2x5vy")
-mode = 0
-increase = 8.0
-decrease = 0.0
-direction = 0
-indicator = ExtResource("8_bx14c")
-event = SubResource("InputEventMouseMotion_bruql")
 
 [sub_resource type="Animation" id="Animation_5wnpa"]
 resource_name = "move"
@@ -142,21 +157,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
 "values": [Vector3(0.0755153, -0.232517, -1.32399), Vector3(3, 20, -1.324)]
-}
-
-[sub_resource type="Animation" id="Animation_lignw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cube:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.0755153, -0.232517, -1.32399)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xpmtj"]
