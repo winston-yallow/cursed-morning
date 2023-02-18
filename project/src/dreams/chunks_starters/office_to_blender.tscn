@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://mdp8ersk42oc"]
+[gd_scene load_steps=12 format=3 uid="uid://mdp8ersk42oc"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_nspwv"]
 [ext_resource type="PackedScene" uid="uid://bgef3c5ejwshk" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="3_2xoej"]
 [ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/procedural/blender/cube.glb" id="4_saqnc"]
+[ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="5_eiqm1"]
+[ext_resource type="Texture2D" uid="uid://ceupoyukjuqj2" path="res://src/quicktimes/images/key_s.png" id="6_cb57o"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="7_pyy72"]
 
 [sub_resource type="Curve3D" id="Curve3D_8ntaq"]
 _data = {
@@ -11,6 +14,22 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_7cc7b"]
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="Resource" id="Resource_aihld"]
+script = ExtResource("7_pyy72")
+mode = 0
+increase = 3.0
+decrease = 1.0
+direction = 2
+indicator = ExtResource("6_cb57o")
+event = SubResource("InputEventKey_7cc7b")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y3qfq"]
 
 [node name="Office to Blender" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
 script = ExtResource("1_nspwv")
@@ -113,3 +132,13 @@ transform = Transform3D(0.727267, 0.0200874, -0.686061, -0.0146118, 0.999798, 0.
 
 [node name="cube9" parent="Cubes" instance=ExtResource("4_saqnc")]
 transform = Transform3D(0.998815, 0, -0.0486754, 0, 1, 0, 0.0486754, 0, 0.998815, 4.11978, -2, -30.7925)
+
+[node name="QuickTimeEvent" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -26)
+script = ExtResource("5_eiqm1")
+time = 2.0
+sequence = Array[ExtResource("7_pyy72")]([SubResource("Resource_aihld")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickTimeEvent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 9)
+shape = SubResource("SphereShape3D_y3qfq")

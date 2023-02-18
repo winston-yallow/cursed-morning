@@ -1,0 +1,144 @@
+[gd_scene load_steps=15 format=3 uid="uid://tx672ucfroas"]
+
+[ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_kj6lw"]
+[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/procedural/office/tile_doors.glb" id="2_htogb"]
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="3_q2pj1"]
+[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/procedural/office/desk.glb" id="4_qb472"]
+[ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="5_jd7u7"]
+[ext_resource type="Texture2D" uid="uid://0xjxboi1nyup" path="res://src/quicktimes/images/key_a.png" id="6_xm23b"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="7_i7wgv"]
+[ext_resource type="Texture2D" uid="uid://cvssn2bcr151w" path="res://src/quicktimes/images/key_d.png" id="8_3n8ra"]
+
+[sub_resource type="Curve3D" id="Curve3D_mrhe0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -20),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_rtm1n"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="Resource" id="Resource_wqnv6"]
+script = ExtResource("7_i7wgv")
+mode = 1
+increase = 1.0
+decrease = 0.0
+direction = 3
+indicator = ExtResource("6_xm23b")
+event = SubResource("InputEventKey_rtm1n")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1d1th"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_uwe68"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Resource" id="Resource_yn14y"]
+script = ExtResource("7_i7wgv")
+mode = 1
+increase = 1.0
+decrease = 0.0
+direction = 3
+indicator = ExtResource("8_3n8ra")
+event = SubResource("InputEventKey_uwe68")
+
+[node name="Forward" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
+script = ExtResource("1_kj6lw")
+first_module = NodePath("ModulePath")
+exit_front = NodePath("ModulePath")
+
+[node name="tile_doors" parent="." instance=ExtResource("2_htogb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="ModulePath" type="Node3D" parent="."]
+script = ExtResource("3_q2pj1")
+
+[node name="Path3D" type="Path3D" parent="ModulePath"]
+curve = SubResource("Curve3D_mrhe0")
+
+[node name="Desks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="desk" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+
+[node name="desk2" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+
+[node name="desk3" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -14)
+
+[node name="desk4" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -17)
+
+[node name="desk5" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -14)
+
+[node name="desk6" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -17)
+
+[node name="desk7" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="desk8" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+
+[node name="desk9" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
+
+[node name="desk10" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -17)
+
+[node name="desk13" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+
+[node name="desk14" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
+
+[node name="desk15" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8)
+
+[node name="desk20" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="desk21" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
+
+[node name="desk22" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="desk25" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="desk26" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+
+[node name="desk29" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14)
+
+[node name="desk30" parent="Desks" instance=ExtResource("4_qb472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -17)
+
+[node name="QTE Grab Coffee" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.8, -8)
+script = ExtResource("5_jd7u7")
+time = 1.2
+sequence = Array[ExtResource("7_i7wgv")]([SubResource("Resource_wqnv6")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QTE Grab Coffee"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.8, 6.5)
+shape = SubResource("SphereShape3D_1d1th")
+
+[node name="QTE Grab Documents" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, -17)
+script = ExtResource("5_jd7u7")
+time = 1.2
+sequence = Array[ExtResource("7_i7wgv")]([SubResource("Resource_yn14y")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QTE Grab Documents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.8, 6.5)
+shape = SubResource("SphereShape3D_1d1th")
