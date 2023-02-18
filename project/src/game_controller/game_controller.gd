@@ -16,6 +16,8 @@ const SNOOZE_USED_COLOR := Color.DIM_GRAY
 @onready var snooze_label_2: Label = %SnoozeLabel2
 @onready var snooze_label_3: Label = %SnoozeLabel3
 
+var is_snoozing := false
+
 var _time := 0.0
 var _lives := 3
 var _viewports: Array[DreamViewport] = []
@@ -44,6 +46,10 @@ func _process(delta: float) -> void:
 
 
 func _on_quicktime_failed() -> void:
+	if is_snoozing:
+		return
+	
+	is_snoozing = true
 	var snooze_label: Label
 	match _lives:
 		3: snooze_label = snooze_label_3
@@ -60,6 +66,8 @@ func _on_quicktime_failed() -> void:
 		)
 	_lives -= 1
 	snooze.start()
+	var timer := get_tree().create_timer(snooze.time + 0.75)
+	timer.timeout.connect(func(): is_snoozing = false)
 
 
 func _transition(dream: Landscape) -> void:

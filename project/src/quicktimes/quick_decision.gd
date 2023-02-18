@@ -40,6 +40,9 @@ func _ready() -> void:
 
 
 func _activate(_other) -> void:
+	if get_tree().current_scene.is_snoozing:
+		_decide(default)
+		return
 	set_process(true)
 	_ui_a = _create_action_ui(action_a, Vector2.LEFT * 32.0)
 	_ui_b = _create_action_ui(action_b, Vector2.RIGHT * 32.0)

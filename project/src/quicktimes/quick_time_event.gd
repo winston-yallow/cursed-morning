@@ -34,6 +34,9 @@ func _ready() -> void:
 
 
 func _activate(_other):
+	if get_tree().current_scene.is_snoozing:
+		succeded.emit()
+		return
 	set_process(true)
 	_current = _internal_sequence.pop_front()
 	_current_ui = _create_action_ui(_current)
