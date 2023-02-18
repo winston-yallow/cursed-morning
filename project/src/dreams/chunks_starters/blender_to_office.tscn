@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfymaf5acs2ws"]
+
+[ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_7m7dk"]
+[ext_resource type="PackedScene" uid="uid://cwmgywtglfvr4" path="res://src/dreams/shared_modules/blender_end.tscn" id="2_hudak"]
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_p3rhb"]
+
+[sub_resource type="Curve3D" id="Curve3D_vckrj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Blender to Office" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
+script = ExtResource("1_7m7dk")
+themes = Array[String](["office"])
+first_module = NodePath("Blender End")
+exit_front = NodePath("ModulePath")
+
+[node name="Blender End" parent="." instance=ExtResource("2_hudak")]
+next_module = NodePath("../ModulePath")
+
+[node name="ModulePath" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+script = ExtResource("2_p3rhb")
+
+[node name="Path3D" type="Path3D" parent="ModulePath"]
+curve = SubResource("Curve3D_vckrj")

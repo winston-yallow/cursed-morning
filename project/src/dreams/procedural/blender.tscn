@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://ngiluc55w11f"]
+
+[ext_resource type="PackedScene" uid="uid://yoeb40ocfsva" path="res://src/dreams/special_landscapes/base.tscn" id="1_mrub1"]
+[ext_resource type="Shader" path="res://src/dreams/procedural/blender_grid.gdshader" id="2_8c1xr"]
+[ext_resource type="Shader" path="res://src/dreams/procedural/blender_interface.gdshader" id="2_kl68q"]
+[ext_resource type="Texture2D" uid="uid://ctr3wap2onmvd" path="res://src/dreams/procedural/blender/overlay.png" id="3_b75l5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgcq5"]
+render_priority = 0
+shader = ExtResource("2_8c1xr")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vwgji"]
+material = SubResource("ShaderMaterial_tgcq5")
+size = Vector2(40, 40)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypny3"]
+shader = ExtResource("2_kl68q")
+shader_parameter/border = Color(0.15, 0.15, 0.15, 1)
+
+[sub_resource type="Environment" id="Environment_duwag"]
+background_mode = 1
+background_color = Color(0.176471, 0.176471, 0.176471, 1)
+tonemap_mode = 1
+
+[node name="Blender" instance=ExtResource("1_mrub1")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character" index="3"]
+mesh = SubResource("PlaneMesh_vwgji")
+skeleton = NodePath("../..")
+
+[node name="TextureRect" type="TextureRect" parent="." index="4"]
+material = SubResource("ShaderMaterial_ypny3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_b75l5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="5"]
+environment = SubResource("Environment_duwag")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" index="0"]
+transform = Transform3D(0.886171, 0.160588, -0.43464, 0, 0.938022, 0.346575, 0.463358, -0.307125, 0.831248, 0, 0, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment" index="1"]
+transform = Transform3D(-0.891497, -0.356946, -0.278967, 6.0416e-10, 0.615785, -0.787914, 0.453026, -0.702423, -0.548971, 0, 0, 0)
+light_energy = 0.6

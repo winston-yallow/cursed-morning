@@ -60,6 +60,8 @@ func run(sync_module: Module) -> Landscape:
 	var proc_dir := DirAccess.open(proc_directory)
 	if proc_dir:
 		for f in proc_dir.get_files():
+			if not f.ends_with("tscn"):
+				continue
 			var scn := load(proc_directory.path_join(f))
 			var def := ChunkDefinition.new(scn)
 			_chunk_defs.append(def)
