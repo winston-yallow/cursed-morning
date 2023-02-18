@@ -1,8 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://daetqqm7kjghq"]
+[gd_scene load_steps=17 format=3 uid="uid://daetqqm7kjghq"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_fs2fc"]
-[ext_resource type="PackedScene" uid="uid://5b8m2u3j6jsc" path="res://src/dreams/modules/example_path.tscn" id="2_3ijyo"]
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_akiab"]
 [ext_resource type="PackedScene" uid="uid://cxixytbiav505" path="res://src/dreams/modules/example_path_3.tscn" id="3_uapu4"]
+[ext_resource type="Texture2D" uid="uid://0xjxboi1nyup" path="res://src/quicktimes/images/key_a.png" id="5_h72wb"]
+[ext_resource type="Script" path="res://src/quicktimes/quick_decision.gd" id="5_rpsdh"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="6_ax65g"]
+[ext_resource type="Texture2D" uid="uid://cvssn2bcr151w" path="res://src/quicktimes/images/key_d.png" id="7_v10im"]
+
+[sub_resource type="Curve3D" id="Curve3D_0o6t5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -16),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_c2nqv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_spiw5"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="Resource" id="Resource_2haw1"]
+script = ExtResource("6_ax65g")
+mode = 0
+increase = 3.0
+decrease = 1.0
+indicator = ExtResource("5_h72wb")
+event = SubResource("InputEventKey_spiw5")
+
+[sub_resource type="InputEventKey" id="InputEventKey_tcgrr"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Resource" id="Resource_ne5jo"]
+script = ExtResource("6_ax65g")
+mode = 0
+increase = 3.0
+decrease = 1.0
+indicator = ExtResource("7_v10im")
+event = SubResource("InputEventKey_tcgrr")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j1aoc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xnbb6"]
 size = Vector3(0.2, 0.2, 5)
@@ -11,39 +57,68 @@ size = Vector3(0.2, 0.2, 5)
 
 [node name="Left" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front", "exit_left", "exit_right")]
 script = ExtResource("1_fs2fc")
-first_module = NodePath("Example Path")
-exit_front = NodePath("Example Forward")
-exit_left = NodePath("Example Left")
+first_module = NodePath("ModulePath")
+exit_front = NodePath("Forward")
+exit_left = NodePath("Left")
 exit_right = NodePath("")
 
-[node name="Example Path" parent="." instance=ExtResource("2_3ijyo")]
-next_module = NodePath("../Example Left")
+[node name="ModulePath" type="Node3D" parent="."]
+script = ExtResource("2_akiab")
 
-[node name="Example Forward" parent="." instance=ExtResource("2_3ijyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
+[node name="Path3D" type="Path3D" parent="ModulePath"]
+curve = SubResource("Curve3D_0o6t5")
 
-[node name="Example Left" parent="." instance=ExtResource("3_uapu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
+[node name="Left" parent="." instance=ExtResource("3_uapu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="Forward" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+script = ExtResource("2_akiab")
+
+[node name="Path3D" type="Path3D" parent="Forward"]
+curve = SubResource("Curve3D_c2nqv")
+
+[node name="QuickDecision" type="Area3D" parent="." node_paths=PackedStringArray("payload_a", "payload_b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16)
+script = ExtResource("5_rpsdh")
+action_a = SubResource("Resource_2haw1")
+action_b = SubResource("Resource_ne5jo")
+payload_a = NodePath("../Left")
+payload_b = NodePath("../Forward")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickDecision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 8)
+shape = SubResource("SphereShape3D_j1aoc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -0.827674, 0, -2.48845)
+transform = Transform3D(0.999998, 0, 0.0018155, 0, 1, 0, -0.0018155, 0, 0.999998, -0.0490086, 0, -3.17501)
 mesh = SubResource("BoxMesh_xnbb6")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -2.22554, 9.53674e-07, -7.37037)
+transform = Transform3D(0.999998, 0, 0.0018155, 0, 1, 0, -0.0018155, 0, 0.999998, -0.00516295, 9.53674e-07, -8.25293)
 mesh = SubResource("BoxMesh_xnbb6")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -3.70222, 1.90735e-06, -12.2772)
+transform = Transform3D(0.999998, 0, 0.0018155, 0, 1, 0, -0.0018155, 0, 0.999998, -0.0298326, 1.90735e-06, -13.3771)
 mesh = SubResource("BoxMesh_xnbb6")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.958437, 0, 0.285304, 0, 1, 0, -0.285304, 0, 0.958437, -5.19231, 2.86102e-06, -17.1503)
+transform = Transform3D(1, 0, -0.000348747, 0, 1, 0, 0.000348747, 0, 1, -0.0402315, 2.38418e-06, -23.4444)
+mesh = SubResource("BoxMesh_xnbb6")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999894, 0, -0.0145726, 0, 1, 0, 0.0145726, 0, 0.999894, -0.0402305, 2.38418e-06, -18.3892)
+mesh = SubResource("BoxMesh_xnbb6")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.950423, 0, 0.310959, 0, 1, 0, -0.310959, 0, 0.950423, -0.800713, 2.86102e-06, -19.4149)
 mesh = SubResource("BoxMesh_xnbb6")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.229132, 0, -0.973395, 0, 1, 0, 0.973395, 0, -0.229132, -7.44248, 2.86102e-06, -16.5047)
+transform = Transform3D(-0.24287, 0, -0.970059, 0, 1, 0, 0.970059, 0, -0.24287, -3.95192, 2.86102e-06, -22.3685)
 mesh = SubResource("BoxMesh_xnbb6")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_le5t0")
+
+[connection signal="decision" from="QuickDecision" to="ModulePath" method="set_next"]

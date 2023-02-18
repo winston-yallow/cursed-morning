@@ -20,6 +20,10 @@ func _ready() -> void:
 		set_active(false)
 
 
+func set_next(mod: Module) -> void:
+	next = mod
+
+
 func switch_to_next(leftover_time: float) -> void:
 	set_active(false)
 	if not is_instance_valid(next):
