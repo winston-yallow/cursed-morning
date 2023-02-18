@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxpuooycswrm7"]
+[gd_scene load_steps=26 format=3 uid="uid://bxpuooycswrm7"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_rl8kg"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_77i37"]
 [ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/procedural/blender/cube.glb" id="3_340rx"]
+[ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="4_h8jcq"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="5_2x5vy"]
+[ext_resource type="Texture2D" uid="uid://bdtnu1yibsbmk" path="res://src/quicktimes/images/direction_w.png" id="5_qqwmg"]
+[ext_resource type="Texture2D" uid="uid://cwoocojkf5b8p" path="res://src/quicktimes/images/direction_e.png" id="7_8dcj8"]
+[ext_resource type="Texture2D" uid="uid://cbe47v8wvj3x3" path="res://src/quicktimes/images/direction_n.png" id="8_bx14c"]
 
 [sub_resource type="Curve3D" id="Curve3D_v0tn6"]
 _data = {
@@ -10,6 +15,155 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_02cvf"]
+relative = Vector2(-5, 0)
+
+[sub_resource type="Resource" id="Resource_kraoi"]
+script = ExtResource("5_2x5vy")
+mode = 0
+increase = 8.0
+decrease = 0.0
+direction = 3
+indicator = ExtResource("5_qqwmg")
+event = SubResource("InputEventMouseMotion_02cvf")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xqugy"]
+
+[sub_resource type="Animation" id="Animation_vrqhr"]
+resource_name = "move"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector3(0.490799, -0.665891, -1.02434), Vector3(-20, 3, -1.024)]
+}
+
+[sub_resource type="Animation" id="Animation_ybkny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.490799, -0.665891, -1.02434)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sdwq"]
+_data = {
+"RESET": SubResource("Animation_ybkny"),
+"move": SubResource("Animation_vrqhr")
+}
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_mx3m2"]
+relative = Vector2(5, 0)
+
+[sub_resource type="Resource" id="Resource_i0u6j"]
+script = ExtResource("5_2x5vy")
+mode = 0
+increase = 8.0
+decrease = 0.0
+direction = 1
+indicator = ExtResource("7_8dcj8")
+event = SubResource("InputEventMouseMotion_mx3m2")
+
+[sub_resource type="Animation" id="Animation_eg1c7"]
+resource_name = "move"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector3(0.155813, -0.85794, -1.03636), Vector3(20, 3, -1.036)]
+}
+
+[sub_resource type="Animation" id="Animation_tjd2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.155813, -0.85794, -1.03636)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkxc8"]
+_data = {
+"RESET": SubResource("Animation_tjd2k"),
+"move": SubResource("Animation_eg1c7")
+}
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_bruql"]
+relative = Vector2(0, -5)
+
+[sub_resource type="Resource" id="Resource_58vct"]
+script = ExtResource("5_2x5vy")
+mode = 0
+increase = 8.0
+decrease = 0.0
+direction = 0
+indicator = ExtResource("8_bx14c")
+event = SubResource("InputEventMouseMotion_bruql")
+
+[sub_resource type="Animation" id="Animation_5wnpa"]
+resource_name = "move"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector3(0.0755153, -0.232517, -1.32399), Vector3(3, 20, -1.324)]
+}
+
+[sub_resource type="Animation" id="Animation_lignw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0755153, -0.232517, -1.32399)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpmtj"]
+_data = {
+"RESET": SubResource("Animation_lignw"),
+"move": SubResource("Animation_5wnpa")
+}
 
 [node name="forward" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
 script = ExtResource("1_rl8kg")
@@ -52,7 +206,7 @@ transform = Transform3D(0.998915, 0.0453043, 0.0107402, -0.045671, 0.998279, 0.0
 transform = Transform3D(0.993897, -0.110052, 0.00760512, 0.109428, 0.992285, 0.0582764, -0.0139599, -0.0570885, 0.998271, 1.90465, -1.67146, -6.53735)
 
 [node name="cube11" parent="Cubes" instance=ExtResource("3_340rx")]
-transform = Transform3D(0.993897, -0.110052, 0.00760512, 0.109428, 0.992285, 0.0582764, -0.0139599, -0.0570885, 0.998271, -2.05825, -0.83721, -8.1411)
+transform = Transform3D(0.993897, -0.110052, 0.00760512, 0.109428, 0.992285, 0.0582764, -0.0139599, -0.0570885, 0.998271, -2.05825, -2.03215, -8.1411)
 
 [node name="cube12" parent="Cubes" instance=ExtResource("3_340rx")]
 transform = Transform3D(0.980307, -0.128991, -0.149528, 0.0716331, 0.937892, -0.339451, 0.184027, 0.322055, 0.928663, -3.9334, -0.83721, -3.991)
@@ -92,3 +246,64 @@ transform = Transform3D(0.876702, 0.0194393, -0.480641, -0.0146118, 0.999798, 0.
 
 [node name="cube9" parent="Cubes" instance=ExtResource("3_340rx")]
 transform = Transform3D(0.785738, 0, -0.618559, 0, 1, 0, 0.618559, 0, 0.785738, -0.123676, -2, -13.9716)
+
+[node name="QTE Left" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -7)
+script = ExtResource("4_h8jcq")
+time = 0.6
+sequence = Array[ExtResource("5_2x5vy")]([SubResource("Resource_kraoi")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QTE Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 6)
+shape = SubResource("SphereShape3D_xqugy")
+
+[node name="cube" parent="QTE Left" instance=ExtResource("3_340rx")]
+transform = Transform3D(0.993174, -0.00557007, 0.116515, 0.00563334, 0.999984, -0.000213653, -0.116512, 0.000868564, 0.993189, 0.490799, -0.665891, -1.02434)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QTE Left"]
+libraries = {
+"": SubResource("AnimationLibrary_1sdwq")
+}
+
+[node name="QTE Right" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -13)
+script = ExtResource("4_h8jcq")
+time = 0.6
+sequence = Array[ExtResource("5_2x5vy")]([SubResource("Resource_i0u6j")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QTE Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 6)
+shape = SubResource("SphereShape3D_xqugy")
+
+[node name="cube" parent="QTE Right" instance=ExtResource("3_340rx")]
+transform = Transform3D(0.956621, -0.00545129, -0.291286, 0.00563334, 0.999984, -0.000213653, 0.291283, -0.00143653, 0.956636, 0.155813, -0.85794, -1.03636)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QTE Right"]
+libraries = {
+"": SubResource("AnimationLibrary_pkxc8")
+}
+
+[node name="QTE Up" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -19)
+script = ExtResource("4_h8jcq")
+time = 0.6
+sequence = Array[ExtResource("5_2x5vy")]([SubResource("Resource_58vct")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QTE Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 6)
+shape = SubResource("SphereShape3D_xqugy")
+
+[node name="cube" parent="QTE Up" instance=ExtResource("3_340rx")]
+transform = Transform3D(0.976575, -0.0054555, 0.215111, 0.0527676, 0.975226, -0.214825, -0.208609, 0.221143, 0.952669, 0.0755153, -0.232517, -1.32399)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QTE Up"]
+libraries = {
+"": SubResource("AnimationLibrary_xpmtj")
+}
+
+[connection signal="failed" from="QTE Left" to="QTE Left/AnimationPlayer" method="play" binds= [&"move"]]
+[connection signal="succeded" from="QTE Left" to="QTE Left/AnimationPlayer" method="play" binds= [&"move"]]
+[connection signal="failed" from="QTE Right" to="QTE Right/AnimationPlayer" method="play" binds= [&"move"]]
+[connection signal="succeded" from="QTE Right" to="QTE Right/AnimationPlayer" method="play" binds= [&"move"]]
+[connection signal="failed" from="QTE Up" to="QTE Up/AnimationPlayer" method="play" binds= [&"move"]]
+[connection signal="succeded" from="QTE Up" to="QTE Up/AnimationPlayer" method="play" binds= [&"move"]]

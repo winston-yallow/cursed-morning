@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfymaf5acs2ws"]
+[gd_scene load_steps=7 format=3 uid="uid://dfymaf5acs2ws"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_7m7dk"]
 [ext_resource type="PackedScene" uid="uid://cwmgywtglfvr4" path="res://src/dreams/shared_modules/blender_end.tscn" id="2_hudak"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_p3rhb"]
+[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/procedural/office/tile_doors.glb" id="4_7oyc0"]
+[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/procedural/office/desk.glb" id="5_7by4f"]
 
 [sub_resource type="Curve3D" id="Curve3D_vckrj"]
 _data = {
@@ -26,3 +28,30 @@ script = ExtResource("2_p3rhb")
 
 [node name="Path3D" type="Path3D" parent="ModulePath"]
 curve = SubResource("Curve3D_vckrj")
+
+[node name="tile_doors" parent="." instance=ExtResource("4_7oyc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="desk" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(0.989384, 0, -0.145323, 0, 1, 0, 0.145323, 0, 0.989384, 3, 0, -15)
+
+[node name="desk2" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(0.125974, 0, -0.992034, 0, 1, 0, 0.992034, 0, 0.125974, -2.72265, 0, -14.5816)
+
+[node name="desk3" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2, 0, -18)
+
+[node name="desk4" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -21)
+
+[node name="desk5" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -21)
+
+[node name="desk6" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -19)
+
+[node name="desk7" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -21)
+
+[node name="desk8" parent="." instance=ExtResource("5_7by4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -19)

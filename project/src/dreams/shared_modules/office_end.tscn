@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgef3c5ejwshk"]
+[gd_scene load_steps=4 format=3 uid="uid://bgef3c5ejwshk"]
 
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="1_8i7ev"]
+[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/procedural/office/desk.glb" id="2_eyayg"]
 
 [sub_resource type="Curve3D" id="Curve3D_16jyp"]
 _data = {
@@ -15,4 +16,35 @@ script = ExtResource("1_8i7ev")
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_16jyp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Desks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="desk" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+
+[node name="desk6" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(0.950451, 0, 0.310876, 0, 1, 0, -0.310876, 0, 0.950451, -3.45424, 0, -15.3863)
+
+[node name="desk8" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(0.993475, 0, 0.114053, 0, 1, 0, -0.114053, 0, 0.993475, -4, 0, -5)
+
+[node name="desk9" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+
+[node name="desk10" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(0.986586, 0, -0.16324, 0, 1, 0, 0.16324, 0, 0.986586, 5, 0, -17)
+
+[node name="desk13" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(0.974307, 0, -0.225223, 0, 1, 0, 0.225223, 0, 0.974307, 5.20394, 0, -13.5988)
+
+[node name="desk20" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(0.900114, 0, -0.435655, 0, 1, 0, 0.435655, 0, 0.900114, 2.84049, 0, -8.20172)
+
+[node name="desk21" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
+
+[node name="desk25" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="desk29" parent="Desks" instance=ExtResource("2_eyayg")]
+transform = Transform3D(0.930871, 0, 0.365348, 0, 1, 0, -0.365348, 0, 0.930871, 2, 0, -14)
