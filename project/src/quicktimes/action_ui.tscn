@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsuatpjvpjudu"]
+[gd_scene load_steps=20 format=3 uid="uid://bsuatpjvpjudu"]
 
 [ext_resource type="Script" path="res://src/quicktimes/action_ui.gd" id="1_s7r2b"]
 [ext_resource type="Texture2D" uid="uid://c3w4gvewk7hvd" path="res://src/quicktimes/images/mask_rect.png" id="2_gah0a"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dmc50ea3vooaf" path="res://src/quicktimes/images/shape_rect.png" id="4_ahfc8"]
 [ext_resource type="Texture2D" uid="uid://d1jgtcahg7f0x" path="res://src/quicktimes/images/button_mouse.png" id="4_x2078"]
 [ext_resource type="Texture2D" uid="uid://dx1ldejvh1xy4" path="res://src/quicktimes/images/mash.png" id="5_idnib"]
+[ext_resource type="Shader" path="res://src/quicktimes/ui_blur_radial.gdshader" id="7_46aln"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrbd0"]
+shader = ExtResource("7_46aln")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ucfjx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vijm"]
 shader = ExtResource("3_4m28w")
@@ -156,6 +162,48 @@ tracks/2/keys = {
 "values": [Color(0.709804, 0.290196, 0.235294, 0.392157)]
 }
 
+[sub_resource type="Animation" id="Animation_u2wsi"]
+resource_name = "finish_neutral"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.709804, 0.709804, 0.709804, 1), Color(0.709804, 0.709804, 0.709804, 1), Color(0.709804, 0.290196, 0.235294, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.709804, 0.709804, 0.709804, 0.392157)]
+}
+
 [sub_resource type="Animation" id="Animation_y6ttq"]
 resource_name = "finish_success"
 length = 0.3
@@ -226,48 +274,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_u2wsi"]
-resource_name = "finish_neutral"
-length = 0.3
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.709804, 0.709804, 0.709804, 1), Color(0.709804, 0.709804, 0.709804, 1), Color(0.709804, 0.290196, 0.235294, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/Background:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.709804, 0.709804, 0.709804, 0.392157)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4q7ju"]
 _data = {
 "RESET": SubResource("Animation_7xr1o"),
@@ -283,6 +289,12 @@ script = ExtResource("1_s7r2b")
 
 [node name="Sprites" type="Node2D" parent="."]
 scale = Vector2(0.5, 0.5)
+
+[node name="Blur" type="Polygon2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_xrbd0")
+texture = SubResource("PlaceholderTexture2D_ucfjx")
+polygon = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+uv = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="Background" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
