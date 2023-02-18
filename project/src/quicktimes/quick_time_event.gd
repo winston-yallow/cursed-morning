@@ -2,6 +2,7 @@ class_name QuickTimeEvent
 extends Area3D
 
 
+signal finished()
 signal succeded()
 signal failed()
 
@@ -36,6 +37,7 @@ func _ready() -> void:
 func _activate(_other):
 	if get_tree().current_scene.is_snoozing:
 		succeded.emit()
+		finished.emit()
 		return
 	set_process(true)
 	_current = _internal_sequence.pop_front()
@@ -64,10 +66,12 @@ func _process(delta: float) -> void:
 	# Check if we reached fail or success conditions
 	if _finished:
 		succeded.emit()
+		finished.emit()
 		_current_ui.finish_success()
 		set_process(false)
 	elif time < 0.0:
 		failed.emit()
+		finished.emit()
 		_current_ui.finish_failure()
 		set_process(false)
 		if forward_fails:
