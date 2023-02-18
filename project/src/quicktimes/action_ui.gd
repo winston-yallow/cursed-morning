@@ -15,10 +15,11 @@ func setup(reference: Node3D, action: Action, offset := Vector2.ZERO) -> void:
 	%Background.texture = action.get_mask()
 	%Progress.texture = action.get_mask()
 	%Progress.visible = action.has_progress()
+	%Progress.rotation = action.get_direction() * TAU * 0.25
+	%Progress.material = %Progress.material.duplicate()
 	%Shape.texture = action.get_shape()
 	%Indicator.texture = action.get_indicator()
 	%Mash.visible = action.needs_mashing()
-	%Progress.material = %Progress.material.duplicate()
 	%StateAnimations.play("init")
 
 

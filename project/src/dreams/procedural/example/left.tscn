@@ -32,6 +32,7 @@ script = ExtResource("6_ax65g")
 mode = 0
 increase = 3.0
 decrease = 1.0
+direction = 3
 indicator = ExtResource("5_h72wb")
 event = SubResource("InputEventKey_spiw5")
 
@@ -45,6 +46,7 @@ script = ExtResource("6_ax65g")
 mode = 0
 increase = 3.0
 decrease = 1.0
+direction = 1
 indicator = ExtResource("7_v10im")
 event = SubResource("InputEventKey_tcgrr")
 

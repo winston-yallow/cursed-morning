@@ -29,6 +29,7 @@ script = ExtResource("6_3c75w")
 mode = 0
 increase = 5.0
 decrease = 3.0
+direction = 0
 indicator = ExtResource("5_ccwc8")
 event = SubResource("InputEventMouseMotion_nla0v")
 

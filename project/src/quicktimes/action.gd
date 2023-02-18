@@ -4,12 +4,14 @@ extends Resource
 
 enum MODE { CONTINUOUS, DISCRETE }
 enum TYPE { ACTION, MOTION, NONE }
+enum DIRECTION { UP=0, RIGHT=1, DOWN=2, LEFT=3 }
 
 const MOTION_MAX_ANGLE := deg_to_rad(15.0)
 
 @export var mode: MODE = MODE.DISCRETE
 @export var increase := 1.0
 @export var decrease := 0.0
+@export var direction: DIRECTION = DIRECTION.UP
 @export var indicator: Texture
 @export var event: InputEvent
 
@@ -108,6 +110,10 @@ func get_shape() -> Texture:
 
 func get_indicator() -> Texture:
 	return indicator
+
+
+func get_direction() -> float:
+	return float(direction)
 
 
 func needs_mashing() -> bool:
