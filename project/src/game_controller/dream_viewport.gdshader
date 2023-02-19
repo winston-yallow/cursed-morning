@@ -20,7 +20,7 @@ void vertex() {
 }
 
 void fragment() {
-	float noise = textureLod(noise_texture, noise_uv, 2.0).x;
+	float noise = textureLod(noise_texture, noise_uv, 3.0).x;
 	vec4 color = texture(vp, SCREEN_UV);
 	float center_distance_normalized = distance(UV, vec2(0.5, 0.5)) / max_dist;
 	float factor = (center_distance_normalized + noise * 0.3) / 1.3;
