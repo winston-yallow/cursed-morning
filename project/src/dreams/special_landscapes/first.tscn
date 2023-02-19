@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=20 format=3 uid="uid://cipj1djnbg544"]
 
 [ext_resource type="Script" path="res://src/dreams/landscape.gd" id="1_qrb4c"]
 [ext_resource type="PackedScene" uid="uid://ncr0xexh7hvh" path="res://src/character/punk.tscn" id="2_c6pc7"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/tile_doors.glb" id="4_c8oy1"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="6_6b8i1"]
 [ext_resource type="Script" path="res://src/dreams/synchronizer.gd" id="6_ymxlo"]
-[ext_resource type="PackedScene" path="res://src/dreams/shared_modules/office_end.tscn" id="7_ms773"]
+[ext_resource type="PackedScene" uid="uid://dq6bdhls8d5jp" path="res://src/dreams/shared_modules/office_end.tscn" id="7_ms773"]
 [ext_resource type="Texture2D" uid="uid://ceupoyukjuqj2" path="res://src/quicktimes/images/key_s.png" id="7_r2th1"]
 [ext_resource type="Script" path="res://src/quicktimes/action.gd" id="8_bclaa"]
 [ext_resource type="PackedScene" uid="uid://dxukumncu4p6j" path="res://src/dreams/models/alarm_clock.glb" id="8_mxwi2"]

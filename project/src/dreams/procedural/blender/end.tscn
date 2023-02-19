@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cslkw74rataah"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_m2irk"]
-[ext_resource type="PackedScene" uid="uid://cwmgywtglfvr4" path="res://src/dreams/shared_modules/blender_end.tscn" id="2_1slkh"]
+[ext_resource type="PackedScene" path="res://src/dreams/shared_modules/blender_end.tscn" id="2_1slkh"]
 [ext_resource type="Script" path="res://src/dreams/synchronizer.gd" id="3_fyjqq"]
 
 [node name="End" type="Node3D" node_paths=PackedStringArray("first_module")]

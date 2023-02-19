@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://dmmdoueir1fjn"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_25pce"]
 [ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/tile_doors.glb" id="2_fp4uq"]

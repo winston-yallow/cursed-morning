@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3]
+[gd_scene load_steps=26 format=3 uid="uid://u0157xg4glwa"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_rl8kg"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_77i37"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://b7t5bterr81gy"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_cgc0t"]
 [ext_resource type="PackedScene" path="res://src/dreams/shared_modules/office_end.tscn" id="2_bakpe"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://cyxmxna78y02"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_nspwv"]
 [ext_resource type="PackedScene" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
@@ -31,6 +31,21 @@ event = SubResource("InputEventKey_7cc7b")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y3qfq"]
 
+[sub_resource type="Animation" id="Animation_81qvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuickTimeEvent/cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, -1.196, -3)]
+}
+
 [sub_resource type="Animation" id="Animation_x5npd"]
 resource_name = "move"
 length = 2.0
@@ -45,21 +60,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 0.5),
 "update": 0,
 "values": [Vector3(1, -1.196, -3), Vector3(-0.49, -15, -10)]
-}
-
-[sub_resource type="Animation" id="Animation_81qvo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("QuickTimeEvent/cube:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, -1.196, -3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kee83"]
