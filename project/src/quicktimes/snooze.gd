@@ -3,7 +3,7 @@ extends Control
 
 @export var increase_step := 0.25
 @export var decrease_speed := 0.35
-@export var time := 1.75
+@export var time := 2.0
 
 @onready var anim: AnimationPlayer = %AnimationPlayer
 @onready var shader: ShaderMaterial = %Label.material
