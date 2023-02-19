@@ -342,6 +342,7 @@ script = ExtResource("1_s7r2b")
 scale = Vector2(0.5, 0.5)
 
 [node name="Blur" type="Polygon2D" parent="Sprites"]
+z_as_relative = false
 material = SubResource("ShaderMaterial_xrbd0")
 texture = SubResource("PlaceholderTexture2D_ucfjx")
 polygon = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
@@ -350,24 +351,34 @@ uv = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)
 [node name="Background" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 0.392157)
+z_index = 100
+z_as_relative = false
 texture = ExtResource("2_gah0a")
 
 [node name="Progress" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.392157)
+z_index = 100
+z_as_relative = false
 material = SubResource("ShaderMaterial_8vijm")
 texture = ExtResource("2_gah0a")
 
 [node name="Shape" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
+z_index = 100
+z_as_relative = false
 texture = ExtResource("4_ahfc8")
 
 [node name="Indicator" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
+z_index = 100
+z_as_relative = false
 texture = ExtResource("4_x2078")
 
 [node name="Mash" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
+z_index = 100
+z_as_relative = false
 texture = ExtResource("5_idnib")
 
 [node name="MashAnimation" type="AnimationPlayer" parent="Sprites"]
