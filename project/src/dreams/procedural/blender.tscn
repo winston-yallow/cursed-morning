@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ngiluc55w11f"]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="PackedScene" uid="uid://yoeb40ocfsva" path="res://src/dreams/special_landscapes/base.tscn" id="1_mrub1"]
 [ext_resource type="Shader" path="res://src/dreams/procedural/blender_grid.gdshader" id="2_8c1xr"]
 [ext_resource type="Shader" path="res://src/dreams/procedural/blender_interface.gdshader" id="2_kl68q"]
-[ext_resource type="Texture2D" uid="uid://ctr3wap2onmvd" path="res://src/dreams/procedural/blender/overlay.png" id="3_b75l5"]
+[ext_resource type="Texture2D" uid="uid://ctr3wap2onmvd" path="res://src/dreams/procedural/overlay.png" id="3_b75l5"]
 [ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="5_sp0y2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgcq5"]
