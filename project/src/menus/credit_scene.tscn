@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqmwatfj0nanp"]
+
+[ext_resource type="Theme" uid="uid://o4jvw62qwmnb" path="res://src/theme/theme.tres" id="1_bse0d"]
+
+[node name="Credit Scene" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bse0d")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 130.0
+offset_bottom = 40.0
+text = "Back [ESC]"

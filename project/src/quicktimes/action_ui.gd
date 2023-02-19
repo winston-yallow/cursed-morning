@@ -6,12 +6,14 @@ const SCREEN_BORDER := 64.0
 var _reference: Node3D
 var _action: Action
 var _offset := Vector2.ZERO
+var _manual := false
 
 
-func setup(reference: Node3D, action: Action, offset := Vector2.ZERO) -> void:
+func setup(reference: Node3D, action: Action, offset := Vector2.ZERO, manual := false) -> void:
 	_reference = reference
 	_action = action
 	_offset = offset
+	_manual = manual
 	%Background.texture = action.get_mask()
 	%Progress.texture = action.get_mask()
 	%Progress.visible = action.has_progress()
@@ -20,7 +22,8 @@ func setup(reference: Node3D, action: Action, offset := Vector2.ZERO) -> void:
 	%Shape.texture = action.get_shape()
 	%Indicator.texture = action.get_indicator()
 	%Mash.visible = action.needs_mashing()
-	%StateAnimations.play("init")
+	if not _manual:
+		%StateAnimations.play("init")
 
 
 func finish_success() -> void:
@@ -37,7 +40,7 @@ func finish_neutral() -> void:
 
 func _process(_delta: float) -> void:
 	%Progress.material.set_shader_parameter("progress", _action.get_progress())
-	if not is_instance_valid(_reference):
+	if not is_instance_valid(_reference) or _manual:
 		return
 	var cam := _reference.get_viewport().get_camera_3d()
 	var screensize := Vector2(get_tree().root.size)

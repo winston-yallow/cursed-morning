@@ -1,0 +1,251 @@
+[gd_scene load_steps=20 format=3 uid="uid://y1ta7nbwo0th"]
+
+[ext_resource type="Theme" uid="uid://o4jvw62qwmnb" path="res://src/theme/theme.tres" id="1_eut25"]
+[ext_resource type="Script" path="res://src/menus/tutorial.gd" id="2_ghs36"]
+[ext_resource type="Texture2D" uid="uid://0xjxboi1nyup" path="res://src/quicktimes/images/key_a.png" id="3_amgdh"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="4_4t33r"]
+[ext_resource type="Texture2D" uid="uid://c58q6aoin5wtv" path="res://src/quicktimes/images/key_w.png" id="5_gdgfs"]
+[ext_resource type="Texture2D" uid="uid://cvssn2bcr151w" path="res://src/quicktimes/images/key_d.png" id="6_bwtui"]
+[ext_resource type="Texture2D" uid="uid://cwoocojkf5b8p" path="res://src/quicktimes/images/direction_e.png" id="7_yi415"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="8_oamn7"]
+[ext_resource type="PackedScene" uid="uid://bsuatpjvpjudu" path="res://src/quicktimes/action_ui.tscn" id="9_gj60h"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pb0ro"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="Resource" id="Resource_ywamv"]
+script = ExtResource("4_4t33r")
+mode = 1
+increase = 1.0
+decrease = 0.0
+direction = 0
+indicator = ExtResource("3_amgdh")
+event = SubResource("InputEventKey_pb0ro")
+
+[sub_resource type="InputEventKey" id="InputEventKey_eonsp"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="Resource" id="Resource_7785j"]
+script = ExtResource("4_4t33r")
+mode = 1
+increase = 0.3
+decrease = 0.5
+direction = 0
+indicator = ExtResource("5_gdgfs")
+event = SubResource("InputEventKey_eonsp")
+
+[sub_resource type="InputEventKey" id="InputEventKey_hmvof"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Resource" id="Resource_5pjk0"]
+script = ExtResource("4_4t33r")
+mode = 0
+increase = 1.0
+decrease = 0.5
+direction = 0
+indicator = ExtResource("6_bwtui")
+event = SubResource("InputEventKey_hmvof")
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_v6e3i"]
+relative = Vector2(5, 0)
+
+[sub_resource type="Resource" id="Resource_aq6wd"]
+script = ExtResource("4_4t33r")
+mode = 0
+increase = 1.0
+decrease = 0.0
+direction = 0
+indicator = ExtResource("7_yi415")
+event = SubResource("InputEventMouseMotion_v6e3i")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dppad"]
+font = ExtResource("8_oamn7")
+font_size = 30
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hemv"]
+font = ExtResource("8_oamn7")
+font_size = 20
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[node name="Tutorial" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eut25")
+script = ExtResource("2_ghs36")
+action_press = SubResource("Resource_ywamv")
+action_mash = SubResource("Resource_7785j")
+action_hold = SubResource("Resource_5pjk0")
+action_move = SubResource("Resource_aq6wd")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1150, 600)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.439216, 0.133333, 0.372549, 1)
+theme_override_fonts/font = ExtResource("8_oamn7")
+theme_override_font_sizes/font_size = 70
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Left" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Story Title" type="Label" parent="CenterContainer/VBoxContainer/HBox/Left"]
+layout_mode = 2
+text = "Gameplay"
+label_settings = SubResource("LabelSettings_dppad")
+
+[node name="Story Explanation" type="Label" parent="CenterContainer/VBoxContainer/HBox/Left"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "To stay asleep, you must continue dreaming. You will wake up if you miss any of the quick time events.
+
+When you wake up, you will have one last chance by pressing snooze: It allows you to go back to sleep.
+
+You can snooze the alarm up to three times. If you fail a quick time event after the third time, you will immediately wake up. If you fail to snooze the alarm, you will also immediately wake up."
+label_settings = SubResource("LabelSettings_7hemv")
+autowrap_mode = 3
+
+[node name="Snooze Title" type="Label" parent="CenterContainer/VBoxContainer/HBox/Left"]
+layout_mode = 2
+text = "Snooze"
+label_settings = SubResource("LabelSettings_dppad")
+
+[node name="Snooze Explanation" type="Label" parent="CenterContainer/VBoxContainer/HBox/Left"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "You will hear the alarm clock and the text \"SNOOZE\" will be shown on the display. To snooze, repeatedly press [spacebar] until the text turns green."
+label_settings = SubResource("LabelSettings_7hemv")
+autowrap_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/HBox"]
+layout_mode = 2
+
+[node name="Right" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer/HBox/Right"]
+layout_mode = 2
+text = "Quick Time Events"
+label_settings = SubResource("LabelSettings_dppad")
+
+[node name="Press" type="HSplitContainer" parent="CenterContainer/VBoxContainer/HBox/Right"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBox/Right/Press"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Press the indicated Button"
+label_settings = SubResource("LabelSettings_7hemv")
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBox/Right/Press"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="PressUI" parent="CenterContainer/VBoxContainer/HBox/Right/Press/Control" instance=ExtResource("9_gj60h")]
+unique_name_in_owner = true
+position = Vector2(32, 32)
+
+[node name="Mash" type="HSplitContainer" parent="CenterContainer/VBoxContainer/HBox/Right"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBox/Right/Mash"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mash the button repeatedly"
+label_settings = SubResource("LabelSettings_7hemv")
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBox/Right/Mash"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="MashUI" parent="CenterContainer/VBoxContainer/HBox/Right/Mash/Control" instance=ExtResource("9_gj60h")]
+unique_name_in_owner = true
+position = Vector2(32, 32)
+
+[node name="Hold" type="HSplitContainer" parent="CenterContainer/VBoxContainer/HBox/Right"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBox/Right/Hold"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hold the key down"
+label_settings = SubResource("LabelSettings_7hemv")
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBox/Right/Hold"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="HoldUI" parent="CenterContainer/VBoxContainer/HBox/Right/Hold/Control" instance=ExtResource("9_gj60h")]
+unique_name_in_owner = true
+position = Vector2(32, 32)
+
+[node name="Move" type="HSplitContainer" parent="CenterContainer/VBoxContainer/HBox/Right"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBox/Right/Move"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move the mouse in the indicated direction"
+label_settings = SubResource("LabelSettings_7hemv")
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBox/Right/Move"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="MoveUI" parent="CenterContainer/VBoxContainer/HBox/Right/Move/Control" instance=ExtResource("9_gj60h")]
+unique_name_in_owner = true
+position = Vector2(32, 32)
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBox/Right"]
+layout_mode = 2
+text = "
+You will only need these keys: WASD + Space"
+label_settings = SubResource("LabelSettings_7hemv")
+
+[node name="Back" type="Button" parent="."]
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 146.0
+offset_bottom = 56.0
+text = "Back [ESC]"
+
+[connection signal="pressed" from="Back" to="." method="back"]

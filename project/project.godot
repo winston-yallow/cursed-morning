@@ -21,6 +21,11 @@ config/icon="res://icon.svg"
 EventBus="*res://src/autoloads/event_bus.gd"
 InputManager="*res://src/autoloads/input_manager.gd"
 
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=650
+
 [filesystem]
 
 import/blender/enabled=false
