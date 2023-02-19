@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=14 format=3 uid="uid://eyjcop6udwtx"]
 
 [ext_resource type="PackedScene" uid="uid://yoeb40ocfsva" path="res://src/dreams/special_landscapes/base.tscn" id="1_mrub1"]
 [ext_resource type="Shader" path="res://src/dreams/procedural/blender_grid.gdshader" id="2_8c1xr"]
@@ -72,6 +72,7 @@ _data = {
 [node name="Blender" instance=ExtResource("1_mrub1")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Character" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("PlaneMesh_vwgji")
 skeleton = NodePath("../..")
 
