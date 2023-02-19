@@ -49,10 +49,11 @@ func _activate(_other) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if is_instance_valid(action_a):
-		action_a._input(event)
-	if is_instance_valid(action_b):
-		action_b._input(event)
+	if is_processing():
+		if is_instance_valid(action_a):
+			action_a._input(event)
+		if is_instance_valid(action_b):
+			action_b._input(event)
 
 
 func _process(delta: float) -> void:
