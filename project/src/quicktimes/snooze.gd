@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 	if _time_left <= 0.0:
 		finish_fail()
 	time_label.value = _time_left / time
-	alarm.volume_db = lerp(-80.0 , 0.0, min((1.0 - _time_left / time) * 5.0, 1.0))
 	shader.set_shader_parameter("progress", _progress)
 
 
@@ -42,8 +41,7 @@ func start() -> void:
 	_time_left = time
 	shader.set_shader_parameter("progress", 0.0)
 	time_label.value = 0.0
-	alarm.volume_db = -80.0
-	alarm.play()
+	alarm.play(0.0)
 	anim.play("show")
 	set_process(true)
 

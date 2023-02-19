@@ -4,6 +4,7 @@ extends Control
 const DreamViewportScene := preload("dream_viewport.tscn")
 const DreamViewport := preload("dream_viewport.gd")
 const Snooze := preload("res://src/quicktimes/snooze.gd")
+const MusicPlayer := preload("res://src/music/music_player.gd")
 
 const EIGHT_HOURS := 60.0 * 60.0 * 8.0
 const SNOOZE_USED_COLOR := Color.DIM_GRAY
@@ -15,6 +16,7 @@ const SNOOZE_USED_COLOR := Color.DIM_GRAY
 @onready var snooze_label_1: Label = %SnoozeLabel1
 @onready var snooze_label_2: Label = %SnoozeLabel2
 @onready var snooze_label_3: Label = %SnoozeLabel3
+@onready var music_player: MusicPlayer = %MusicPlayer
 
 var is_snoozing := false
 
@@ -66,6 +68,14 @@ func _on_quicktime_failed() -> void:
 		)
 	_lives -= 1
 	snooze.start()
+	
+	# Make music quite for the time of snoozing
+	var t := create_tween()
+	t.tween_method(music_player.set_volume_lerp, 1.0, 0.0, 0.3)
+	t.tween_interval(snooze.time - 0.6)
+	t.tween_method(music_player.set_volume_lerp, 0.0, 1.0, 0.3)
+	
+	# Disable snooze safety
 	var timer := get_tree().create_timer(snooze.time + 0.75)
 	timer.timeout.connect(func(): is_snoozing = false)
 
