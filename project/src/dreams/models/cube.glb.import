@@ -32,7 +32,7 @@ _subresources={
 "materials": {
 "blender_default": {
 "use_external/enabled": true,
-"use_external/path": "res://src/dreams/procedural/blender/blender_default.tres"
+"use_external/path": "res://src/dreams/models/materials/blender_default.tres"
 }
 }
 }
