@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mdp8ersk42oc"]
+[gd_scene load_steps=15 format=3 uid="uid://mdp8ersk42oc"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_nspwv"]
 [ext_resource type="PackedScene" uid="uid://bgef3c5ejwshk" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
@@ -30,6 +30,43 @@ indicator = ExtResource("6_cb57o")
 event = SubResource("InputEventKey_7cc7b")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y3qfq"]
+
+[sub_resource type="Animation" id="Animation_x5npd"]
+resource_name = "move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuickTimeEvent/cube:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector3(1, -1.196, -3), Vector3(-0.49, -15, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_81qvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuickTimeEvent/cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, -1.196, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kee83"]
+_data = {
+"RESET": SubResource("Animation_81qvo"),
+"move": SubResource("Animation_x5npd")
+}
 
 [node name="Office to Blender" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front")]
 script = ExtResource("1_nspwv")
@@ -134,11 +171,21 @@ transform = Transform3D(0.727267, 0.0200874, -0.686061, -0.0146118, 0.999798, 0.
 transform = Transform3D(0.998815, 0, -0.0486754, 0, 1, 0, 0.0486754, 0, 0.998815, 4.11978, -2, -30.7925)
 
 [node name="QuickTimeEvent" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -28)
 script = ExtResource("5_eiqm1")
 time = 2.0
 sequence = Array[ExtResource("7_pyy72")]([SubResource("Resource_aihld")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="QuickTimeEvent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 11)
 shape = SubResource("SphereShape3D_y3qfq")
+
+[node name="cube" parent="QuickTimeEvent" instance=ExtResource("4_saqnc")]
+transform = Transform3D(0.971969, -0.1216, 0.201221, 0.129005, 0.991352, -0.0240544, -0.196556, 0.0493386, 0.979251, 1, -1.196, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kee83")
+}
+
+[connection signal="finished" from="QuickTimeEvent" to="AnimationPlayer" method="play" binds= ["move"]]
