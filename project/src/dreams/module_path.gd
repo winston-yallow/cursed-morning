@@ -10,6 +10,8 @@ const CAMERA_TARGET := Vector3.UP * 1.3
 
 @export_node_path("Path3D") var path_node: NodePath = "Path3D"
 @onready var _path: Path3D = get_node(path_node)
+@export var _path_camera_position: Path3D
+@export var _path_camera_target: Path3D
 @onready var _curve: Curve3D = _path.curve
 
 
@@ -35,10 +37,24 @@ func _process(delta: float) -> void:
 	var dir_2d := Vector2(dir.x, dir.z)
 	character.rotation.y = -dir_2d.angle() + TAU * 0.25
 	character.position = _path.to_global(_curve.sample_baked(offset))
-	# TODO: Paths for camera positon too?
-	# Calculate camera positons relative to character
-	camera_position.position = character.to_global(CAMERA_POSITION)
-	camera_target.position = character.to_global(CAMERA_TARGET)
+	
+	# Calculate camera positon
+	if is_instance_valid(_path_camera_position):
+		var c := _path_camera_position.curve
+		var p := c.sample_baked(c.get_baked_length() * progress)
+		camera_position.position = _path_camera_position.to_global(p)
+		camera_position.position += character.global_transform.basis * CAMERA_POSITION
+	else:
+		camera_position.position = character.to_global(CAMERA_POSITION)
+	
+	# Calculate camera target
+	if is_instance_valid(_path_camera_target):
+		var c := _path_camera_target.curve
+		var p := c.sample_baked(c.get_baked_length() * progress)
+		camera_target.position = _path_camera_target.to_global(p)
+		camera_position.position += character.global_transform.basis * CAMERA_TARGET
+	else:
+		camera_target.position = character.to_global(CAMERA_TARGET)
 	
 	# Switch to next module if we reached the end
 	if offset >= _curve.get_baked_length():

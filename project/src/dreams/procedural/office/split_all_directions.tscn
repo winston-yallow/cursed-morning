@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://0iyfvfkodxw1"]
+[gd_scene load_steps=27 format=3 uid="uid://0iyfvfkodxw1"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_tfrsr"]
 [ext_resource type="PackedScene" uid="uid://b28x0b8ottf3o" path="res://src/dreams/models/office_tile_outdoor.glb" id="2_oty7h"]
@@ -17,6 +17,13 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_sx4fe"]
+_data = {
+"points": PackedVector3Array(0, 0, 5, 0, 0, -5, 0, 0, 0, -1, 0, 7, 1, 0, -7, -8, 0, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="Curve3D" id="Curve3D_wwhkd"]
 _data = {
 "points": PackedVector3Array(0, 0, 6, 0, 0, -6, -6, 0, -18, -8, 0, 0, 8, 0, 0, 6, 0, -26),
@@ -24,9 +31,23 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_yt7db"]
+_data = {
+"points": PackedVector3Array(-1, 0, 7, 1, 0, -7, -8.00255, 0, -14.9669, -8, 0, 0, 8, 0, 0, 5.79152, 0, -26.0609),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="Curve3D" id="Curve3D_164vj"]
 _data = {
 "points": PackedVector3Array(0, 0, 16, 0, 0, -16, -6, 0, -18, 8, 0, 8, -8, 0, -8, -33, 0, -23),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_icuq3"]
+_data = {
+"points": PackedVector3Array(-2, 0, 14, 2, 0, -14, -8, 0, -15, 7, 0, 7, -7, 0, -7, -33, 0, -23),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -108,25 +129,37 @@ exit_right = NodePath("Modules/Right")
 
 [node name="Modules" type="Node3D" parent="."]
 
-[node name="First" type="Node3D" parent="Modules"]
+[node name="First" type="Node3D" parent="Modules" node_paths=PackedStringArray("_path_camera_position")]
 script = ExtResource("3_mp514")
 next_module = NodePath("../To Second Decision")
+_path_camera_position = NodePath("PathCamera")
 
 [node name="Path3D" type="Path3D" parent="Modules/First"]
 curve = SubResource("Curve3D_1i0s6")
 
-[node name="Right" type="Node3D" parent="Modules"]
+[node name="PathCamera" type="Path3D" parent="Modules/First"]
+curve = SubResource("Curve3D_sx4fe")
+
+[node name="Right" type="Node3D" parent="Modules" node_paths=PackedStringArray("_path_camera_position")]
 script = ExtResource("3_mp514")
+_path_camera_position = NodePath("PathCamera")
 
 [node name="Path3D" type="Path3D" parent="Modules/Right"]
 curve = SubResource("Curve3D_wwhkd")
 
-[node name="To Second Decision" type="Node3D" parent="Modules"]
+[node name="PathCamera" type="Path3D" parent="Modules/Right"]
+curve = SubResource("Curve3D_yt7db")
+
+[node name="To Second Decision" type="Node3D" parent="Modules" node_paths=PackedStringArray("_path_camera_position")]
 script = ExtResource("3_mp514")
 next_module = NodePath("../Left")
+_path_camera_position = NodePath("PathCamera")
 
 [node name="Path3D" type="Path3D" parent="Modules/To Second Decision"]
 curve = SubResource("Curve3D_164vj")
+
+[node name="PathCamera" type="Path3D" parent="Modules/To Second Decision"]
+curve = SubResource("Curve3D_icuq3")
 
 [node name="Left" type="Node3D" parent="Modules"]
 script = ExtResource("3_mp514")
@@ -146,7 +179,7 @@ curve = SubResource("Curve3D_c7d3t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -16)
 
 [node name="First Decision" type="Area3D" parent="." node_paths=PackedStringArray("payload_a", "payload_b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -22)
 script = ExtResource("4_nwcen")
 time = 1.5
 action_a = SubResource("Resource_getbf")
@@ -155,11 +188,11 @@ payload_a = NodePath("../Modules/To Second Decision")
 payload_b = NodePath("../Modules/Right")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="First Decision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 16)
 shape = SubResource("SphereShape3D_ppjta")
 
 [node name="Second Decision" type="Area3D" parent="." node_paths=PackedStringArray("payload_a", "payload_b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 2, -27)
 script = ExtResource("4_nwcen")
 time = 1.75
 action_a = SubResource("Resource_o3ptc")
@@ -168,7 +201,7 @@ payload_a = NodePath("../Modules/Left")
 payload_b = NodePath("../Modules/Front")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Second Decision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58891, -1, 1.51687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5889, -2, 5.51687)
 shape = SubResource("SphereShape3D_ppjta")
 
 [connection signal="decision" from="First Decision" to="Modules/First" method="set_next"]
