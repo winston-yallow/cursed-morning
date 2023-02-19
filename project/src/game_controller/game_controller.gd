@@ -5,6 +5,7 @@ const DreamViewportScene := preload("dream_viewport.tscn")
 const DreamViewport := preload("dream_viewport.gd")
 const Snooze := preload("res://src/quicktimes/snooze.gd")
 const MusicPlayer := preload("res://src/music/music_player.gd")
+const ActionUI := preload("res://src/quicktimes/action_ui.gd")
 
 const EIGHT_HOURS := 60.0 * 60.0 * 8.0
 const SNOOZE_USED_COLOR := Color.DIM_GRAY
@@ -27,13 +28,14 @@ var _viewports: Array[DreamViewport] = []
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_tree().root.mode = Window.MODE_MAXIMIZED
 	
 	# Load first scene
 	var dream := preload("res://src/dreams/special_landscapes/first.tscn").instantiate()
 	dream.sync_progress = 1.0
 	dream.startup()
 	_create_vp(dream)
+	
+	snooze.failed.connect(gameover)
 	
 	EventBus.transition.connect(_transition)
 	EventBus.quicktime_failed.connect(_on_quicktime_failed)
@@ -58,26 +60,53 @@ func _on_quicktime_failed() -> void:
 		2: snooze_label = snooze_label_2
 		1: snooze_label = snooze_label_1
 	if is_instance_valid(snooze_label):
-		var t := create_tween()
-		t.tween_method(
+		var st := create_tween()
+		st.tween_method(
 			func set_snooze_color(color: Color) -> void:
 				snooze_label.add_theme_color_override("font_color", color),
 			Color.WHITE,
 			SNOOZE_USED_COLOR,
 			snooze.time
 		)
-	_lives -= 1
-	snooze.start()
-	
-	# Make music quite for the time of snoozing
-	var t := create_tween()
-	t.tween_method(music_player.set_volume_lerp, 1.0, 0.0, 0.3)
-	t.tween_interval(snooze.time - 0.6)
-	t.tween_method(music_player.set_volume_lerp, 0.0, 1.0, 0.3)
-	
-	# Disable snooze safety
-	var timer := get_tree().create_timer(snooze.time + 0.75)
-	timer.timeout.connect(func(): is_snoozing = false)
+		_lives -= 1
+		snooze.start()
+		
+		# Make music quite for the time of snoozing
+		var mt := create_tween()
+		mt.tween_method(music_player.set_volume_lerp, 1.0, 0.0, 0.3)
+		mt.tween_interval(snooze.time - 0.6)
+		mt.tween_method(music_player.set_volume_lerp, 0.0, 1.0, 0.3)
+		
+		# Disable snooze safety
+		var timer := get_tree().create_timer(snooze.time + 0.75)
+		timer.timeout.connect(func(): is_snoozing = false)
+	else:
+		gameover()
+
+
+func gameover() -> void:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		var mt := create_tween()
+		mt.tween_method(music_player.set_volume_lerp, 1.0, 0.0, 0.3)
+		mt.tween_interval(snooze.time - 0.6)
+		mt.tween_callback(snooze.stop_sound_only)
+		snooze.play_sound_only()
+		%AnimationPlayer.animation_finished.connect(_cleanup)
+		%AnimationPlayer.play("gameover")
+		var duration: float = %AnimationPlayer.get_animation("gameover").length
+		var at := create_tween()
+		at.set_parallel(true)
+		for child in canvas_layer.get_children():
+			if child is ActionUI:
+				at.tween_property(child, "modulate", Color.TRANSPARENT, duration)
+
+
+func _cleanup(_anim) -> void:
+	for vp in _viewports:
+		vp.queue_free()
+	for child in canvas_layer.get_children():
+		if child is ActionUI:
+			child.queue_free()
 
 
 func _transition(dream: Landscape) -> void:

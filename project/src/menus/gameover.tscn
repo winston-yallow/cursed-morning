@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqlev1i808di4"]
+
+[ext_resource type="Theme" uid="uid://o4jvw62qwmnb" path="res://src/theme/theme.tres" id="1_rlup6"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="2_33iyo"]
+[ext_resource type="Script" path="res://src/menus/gameover.gd" id="2_mct4v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqjim"]
+font = ExtResource("2_33iyo")
+font_size = 50
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_si5ft"]
+font = ExtResource("2_33iyo")
+font_size = 24
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[node name="Game Over" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rlup6")
+script = ExtResource("2_mct4v")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_jqjim")
+
+[node name="Story" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Finally you are awake. You realize how often you must have pressed the snooze button as it is way later than you planned to wake up."
+label_settings = SubResource("LabelSettings_si5ft")
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Menu" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Main Menu"
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play Again"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Menu" to="." method="main"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Play" to="." method="play"]

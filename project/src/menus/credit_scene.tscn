@@ -1,0 +1,224 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqmwatfj0nanp"]
+
+[ext_resource type="Theme" uid="uid://o4jvw62qwmnb" path="res://src/theme/theme.tres" id="1_bse0d"]
+[ext_resource type="Script" path="res://src/menus/credit_scene.gd" id="2_sv5ly"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="3_d1aw2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f8oo5"]
+font = ExtResource("3_d1aw2")
+font_size = 50
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxcqs"]
+font = ExtResource("3_d1aw2")
+font_size = 25
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gxn6u"]
+font = ExtResource("3_d1aw2")
+font_size = 17
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[sub_resource type="Animation" id="Animation_him04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_62yfs"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3138"]
+_data = {
+"RESET": SubResource("Animation_him04"),
+"fade_in": SubResource("Animation_62yfs")
+}
+
+[node name="Credit Scene" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bse0d")
+script = ExtResource("2_sv5ly")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1150, 510)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+label_settings = SubResource("LabelSettings_f8oo5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+
+[node name="Game Title" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Programming"
+label_settings = SubResource("LabelSettings_hxcqs")
+horizontal_alignment = 1
+
+[node name="Game" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Winston Yallow"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Models Title" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "3D Assets"
+label_settings = SubResource("LabelSettings_hxcqs")
+horizontal_alignment = 1
+
+[node name="Character" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character: Quaternius (CC0)"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="Other" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "All other 3D assets: Winston Yallow"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Audio Title" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+label_settings = SubResource("LabelSettings_hxcqs")
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music: \"Synth Kid - Elsewhere\" by Jim Hall (CC BY 4.0)"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Fonts Title" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fonts"
+label_settings = SubResource("LabelSettings_hxcqs")
+horizontal_alignment = 1
+
+[node name="Handlee" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Handlee: Google Fonts / Joe Prince (SIL OFL 1.1)"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="E 1234" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "E 1234: GGBotNet (SIL OFL 1.1)"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="HSeparator6" type="HSeparator" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sprites Title" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sprites and Icons"
+label_settings = SubResource("LabelSettings_hxcqs")
+horizontal_alignment = 1
+
+[node name="Sprites" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Winston Yallow
+"
+label_settings = SubResource("LabelSettings_gxn6u")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -40.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back [ESC]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade_in"
+libraries = {
+"": SubResource("AnimationLibrary_e3138")
+}
+
+[connection signal="pressed" from="Button" to="." method="back"]

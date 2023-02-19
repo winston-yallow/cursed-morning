@@ -21,4 +21,4 @@ func _process(delta: float) -> void:
 
 func load_menu() -> void:
 	set_process(false)
-	print("TODO: Actually forward to menu")
+	get_tree().change_scene_to_packed(preload("res://src/menus/main.tscn"))

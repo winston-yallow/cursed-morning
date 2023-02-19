@@ -1,6 +1,8 @@
 extends Control
 
 
+signal failed()
+
 @export var increase_step := 0.25
 @export var decrease_speed := 0.35
 @export var time := 2.0
@@ -34,6 +36,14 @@ func _process(delta: float) -> void:
 		finish_fail()
 	time_label.value = _time_left / time
 	shader.set_shader_parameter("progress", _progress)
+
+
+func play_sound_only() -> void:
+	alarm.play(0.0)
+
+
+func stop_sound_only() -> void:
+	alarm.stop()
 
 
 func start() -> void:

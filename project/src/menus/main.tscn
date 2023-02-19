@@ -1,0 +1,191 @@
+[gd_scene load_steps=10 format=3 uid="uid://cf6xcxll3irfv"]
+
+[ext_resource type="Theme" uid="uid://o4jvw62qwmnb" path="res://src/theme/theme.tres" id="1_l5ko8"]
+[ext_resource type="Script" path="res://src/menus/main.gd" id="2_dxmjb"]
+[ext_resource type="FontFile" uid="uid://dovlds8a1iwhq" path="res://src/fonts/handlee.ttf" id="2_lxu64"]
+[ext_resource type="Texture2D" uid="uid://bhwud1ae5jj16" path="res://src/menus/alarm_clock.png" id="3_xwgxs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w088k"]
+font = ExtResource("2_lxu64")
+font_size = 120
+font_color = Color(0.439216, 0.133333, 0.372549, 1)
+
+[sub_resource type="Animation" id="Animation_bfpnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clock:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iukdl"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clock:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sshw6"]
+resource_name = "fade_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clock:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bep5t"]
+_data = {
+"RESET": SubResource("Animation_bfpnm"),
+"fade_in": SubResource("Animation_iukdl"),
+"fade_out": SubResource("Animation_sshw6")
+}
+
+[node name="Main" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l5ko8")
+script = ExtResource("2_dxmjb")
+
+[node name="Clock" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -791.0
+offset_top = -588.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(759, 556)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("3_xwgxs")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cursed Morning"
+label_settings = SubResource("LabelSettings_w088k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Tutorial" type="Button" parent="VBoxContainer/HBoxContainer/Left"]
+layout_mode = 2
+text = "Tutorial"
+
+[node name="Start" type="Button" parent="VBoxContainer/HBoxContainer/Left"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer/Left"]
+layout_mode = 2
+text = "Credits"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer/Left"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer/Left"]
+layout_mode = 2
+text = "Exit to Desktop"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "fade_in"
+libraries = {
+"": SubResource("AnimationLibrary_bep5t")
+}
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Left/Tutorial" to="." method="tutorial"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Left/Start" to="." method="start"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Left/Credits" to="." method="credits"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Left/Exit" to="." method="exit"]
