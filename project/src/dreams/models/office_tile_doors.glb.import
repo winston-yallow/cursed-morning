@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b5e10us8jlwam"
-path="res://.godot/imported/tile_doors.glb-16d207a0e200af7cc3afeb458d05dcf4.scn"
+path="res://.godot/imported/office_tile_doors.glb-ff97ed3a00c487ab257424bda69cf570.scn"
 
 [deps]
 
-source_file="res://src/dreams/models/tile_doors.glb"
-dest_files=["res://.godot/imported/tile_doors.glb-16d207a0e200af7cc3afeb458d05dcf4.scn"]
+source_file="res://src/dreams/models/office_tile_doors.glb"
+dest_files=["res://.godot/imported/office_tile_doors.glb-ff97ed3a00c487ab257424bda69cf570.scn"]
 
 [params]
 

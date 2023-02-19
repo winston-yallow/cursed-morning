@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cipj1djnbg544"]
+[gd_scene load_steps=20 format=3 uid="uid://dechmug3on8id"]
 
 [ext_resource type="Script" path="res://src/dreams/landscape.gd" id="1_qrb4c"]
 [ext_resource type="PackedScene" uid="uid://ncr0xexh7hvh" path="res://src/character/punk.tscn" id="2_c6pc7"]
 [ext_resource type="Script" path="res://src/camera/smooth_camera.gd" id="3_ifl30"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="4_50klq"]
-[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/tile_doors.glb" id="4_c8oy1"]
+[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/office_tile_doors.glb" id="4_c8oy1"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="6_6b8i1"]
 [ext_resource type="Script" path="res://src/dreams/synchronizer.gd" id="6_ymxlo"]
 [ext_resource type="PackedScene" uid="uid://dq6bdhls8d5jp" path="res://src/dreams/shared_modules/office_end.tscn" id="7_ms773"]
@@ -99,6 +99,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
 [node name="tile_doors2" parent="." instance=ExtResource("4_c8oy1")]
 transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, -0.229561, -29.9138)
+
+[node name="tile_doors6" parent="." instance=ExtResource("4_c8oy1")]
+transform = Transform3D(-4.37114e-08, -1.50996e-07, 1, 0, -1, -1.50996e-07, 1, -6.60025e-15, 4.37114e-08, 0, 6.2, -29.914)
 
 [node name="tile_doors3" parent="." instance=ExtResource("4_c8oy1")]
 transform = Transform3D(-1, -8.74228e-08, -1.32005e-14, -8.74228e-08, 1, 1.50996e-07, 0, 1.50996e-07, -1, 16, 0, -29.914)

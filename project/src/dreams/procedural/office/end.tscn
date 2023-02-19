@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7t5bterr81gy"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_cgc0t"]
-[ext_resource type="PackedScene" path="res://src/dreams/shared_modules/office_end.tscn" id="2_bakpe"]
+[ext_resource type="PackedScene" uid="uid://dq6bdhls8d5jp" path="res://src/dreams/shared_modules/office_end.tscn" id="2_bakpe"]
 [ext_resource type="Script" path="res://src/dreams/synchronizer.gd" id="3_ua6tk"]
-[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/tile_doors.glb" id="4_t1ni5"]
+[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/office_tile_doors.glb" id="4_t1ni5"]
 
 [node name="End" type="Node3D" node_paths=PackedStringArray("first_module")]
 script = ExtResource("1_cgc0t")

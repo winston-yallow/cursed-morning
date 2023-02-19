@@ -1,0 +1,175 @@
+[gd_scene load_steps=24 format=3 uid="uid://0iyfvfkodxw1"]
+
+[ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_tfrsr"]
+[ext_resource type="PackedScene" uid="uid://b28x0b8ottf3o" path="res://src/dreams/models/office_tile_outdoor.glb" id="2_oty7h"]
+[ext_resource type="Script" path="res://src/dreams/module_path.gd" id="3_mp514"]
+[ext_resource type="Script" path="res://src/quicktimes/quick_decision.gd" id="4_nwcen"]
+[ext_resource type="Texture2D" uid="uid://bdtnu1yibsbmk" path="res://src/quicktimes/images/direction_w.png" id="5_qkc3a"]
+[ext_resource type="Script" path="res://src/quicktimes/action.gd" id="6_27mos"]
+[ext_resource type="Texture2D" uid="uid://cvssn2bcr151w" path="res://src/quicktimes/images/key_d.png" id="7_o7nob"]
+[ext_resource type="Texture2D" uid="uid://cwoocojkf5b8p" path="res://src/quicktimes/images/direction_e.png" id="7_ucm1m"]
+[ext_resource type="Texture2D" uid="uid://c58q6aoin5wtv" path="res://src/quicktimes/images/key_w.png" id="8_g1khp"]
+
+[sub_resource type="Curve3D" id="Curve3D_1i0s6"]
+_data = {
+"points": PackedVector3Array(0, 0, 9, 0, 0, -9, 0, 0, 0, 0, 0, 8, 0, 0, -8, -6, 0, -18),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_wwhkd"]
+_data = {
+"points": PackedVector3Array(0, 0, 6, 0, 0, -6, -6, 0, -18, -8, 0, 0, 8, 0, 0, 6, 0, -26),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_164vj"]
+_data = {
+"points": PackedVector3Array(0, 0, 16, 0, 0, -16, -6, 0, -18, 8, 0, 8, -8, 0, -8, -33, 0, -23),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_t50js"]
+_data = {
+"points": PackedVector3Array(2, 0, 2, -2, 0, -2, -33, 0, -23, 5, 0, 0, -5, 0, 0, -42, 0, -26),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_c7d3t"]
+_data = {
+"points": PackedVector3Array(2, 0, 2, -2, 0, -2, -33, 0, -23, 0, 0, 5, 0, 0, -5, -36, 0, -32),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_b2hdk"]
+relative = Vector2(-5, 0)
+
+[sub_resource type="Resource" id="Resource_getbf"]
+script = ExtResource("6_27mos")
+mode = 0
+increase = 10.0
+decrease = 1.0
+direction = 3
+indicator = ExtResource("5_qkc3a")
+event = SubResource("InputEventMouseMotion_b2hdk")
+
+[sub_resource type="InputEventMouseMotion" id="InputEventMouseMotion_k6fcx"]
+relative = Vector2(5, 0)
+
+[sub_resource type="Resource" id="Resource_wbxa7"]
+script = ExtResource("6_27mos")
+mode = 0
+increase = 10.0
+decrease = 1.0
+direction = 1
+indicator = ExtResource("7_ucm1m")
+event = SubResource("InputEventMouseMotion_k6fcx")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ppjta"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_g3ewx"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="Resource" id="Resource_o3ptc"]
+script = ExtResource("6_27mos")
+mode = 0
+increase = 2.0
+decrease = 1.0
+direction = 0
+indicator = ExtResource("8_g1khp")
+event = SubResource("InputEventKey_g3ewx")
+
+[sub_resource type="InputEventKey" id="InputEventKey_qvb22"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Resource" id="Resource_jtkgs"]
+script = ExtResource("6_27mos")
+mode = 0
+increase = 2.0
+decrease = 1.0
+direction = 1
+indicator = ExtResource("7_o7nob")
+event = SubResource("InputEventKey_qvb22")
+
+[node name="Split All Directions" type="Node3D" node_paths=PackedStringArray("first_module", "exit_front", "exit_left", "exit_right")]
+script = ExtResource("1_tfrsr")
+first_module = NodePath("Modules/First")
+exit_front = NodePath("Modules/Front")
+exit_left = NodePath("Modules/Left")
+exit_right = NodePath("Modules/Right")
+
+[node name="Modules" type="Node3D" parent="."]
+
+[node name="First" type="Node3D" parent="Modules"]
+script = ExtResource("3_mp514")
+next_module = NodePath("../To Second Decision")
+
+[node name="Path3D" type="Path3D" parent="Modules/First"]
+curve = SubResource("Curve3D_1i0s6")
+
+[node name="Right" type="Node3D" parent="Modules"]
+script = ExtResource("3_mp514")
+
+[node name="Path3D" type="Path3D" parent="Modules/Right"]
+curve = SubResource("Curve3D_wwhkd")
+
+[node name="To Second Decision" type="Node3D" parent="Modules"]
+script = ExtResource("3_mp514")
+next_module = NodePath("../Left")
+
+[node name="Path3D" type="Path3D" parent="Modules/To Second Decision"]
+curve = SubResource("Curve3D_164vj")
+
+[node name="Left" type="Node3D" parent="Modules"]
+script = ExtResource("3_mp514")
+
+[node name="Path3D" type="Path3D" parent="Modules/Left"]
+curve = SubResource("Curve3D_t50js")
+
+[node name="Front" type="Node3D" parent="Modules"]
+script = ExtResource("3_mp514")
+
+[node name="Path3D" type="Path3D" parent="Modules/Front"]
+curve = SubResource("Curve3D_c7d3t")
+
+[node name="Static Objects" type="Node3D" parent="."]
+
+[node name="office_tile_outdoor" parent="Static Objects" instance=ExtResource("2_oty7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -16)
+
+[node name="First Decision" type="Area3D" parent="." node_paths=PackedStringArray("payload_a", "payload_b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -18)
+script = ExtResource("4_nwcen")
+time = 1.5
+action_a = SubResource("Resource_getbf")
+action_b = SubResource("Resource_wbxa7")
+payload_a = NodePath("../Modules/To Second Decision")
+payload_b = NodePath("../Modules/Right")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="First Decision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 12)
+shape = SubResource("SphereShape3D_ppjta")
+
+[node name="Second Decision" type="Area3D" parent="." node_paths=PackedStringArray("payload_a", "payload_b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -23)
+script = ExtResource("4_nwcen")
+time = 1.75
+action_a = SubResource("Resource_o3ptc")
+action_b = SubResource("Resource_jtkgs")
+payload_a = NodePath("../Modules/Left")
+payload_b = NodePath("../Modules/Front")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Second Decision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58891, -1, 1.51687)
+shape = SubResource("SphereShape3D_ppjta")
+
+[connection signal="decision" from="First Decision" to="Modules/First" method="set_next"]
+[connection signal="decision" from="Second Decision" to="Modules/To Second Decision" method="set_next"]

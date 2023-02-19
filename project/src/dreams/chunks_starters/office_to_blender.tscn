@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cyxmxna78y02"]
 
 [ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_nspwv"]
-[ext_resource type="PackedScene" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
+[ext_resource type="PackedScene" uid="uid://dq6bdhls8d5jp" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="3_2xoej"]
 [ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/models/cube.glb" id="4_saqnc"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="5_eiqm1"]
