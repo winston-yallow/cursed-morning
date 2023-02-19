@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwmgywtglfvr4"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="1_gai84"]
-[ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/procedural/blender/cube.glb" id="2_fv6tu"]
+[ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/models/cube.glb" id="2_fv6tu"]
 
 [sub_resource type="Curve3D" id="Curve3D_dhx35"]
 _data = {

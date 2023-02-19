@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgef3c5ejwshk"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="1_8i7ev"]
-[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/procedural/office/desk.glb" id="2_eyayg"]
+[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/models/desk.glb" id="2_eyayg"]
 
 [sub_resource type="Curve3D" id="Curve3D_16jyp"]
 _data = {

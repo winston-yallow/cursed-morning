@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://br1xpdjf5152o"
-path="res://.godot/imported/desk.glb-5736ef3d9735922b8ae0a9c58a7917bb.scn"
+uid="uid://b5e10us8jlwam"
+path="res://.godot/imported/tile_doors.glb-16d207a0e200af7cc3afeb458d05dcf4.scn"
 
 [deps]
 
-source_file="res://src/dreams/procedural/office/desk.glb"
-dest_files=["res://.godot/imported/desk.glb-5736ef3d9735922b8ae0a9c58a7917bb.scn"]
+source_file="res://src/dreams/models/tile_doors.glb"
+dest_files=["res://.godot/imported/tile_doors.glb-16d207a0e200af7cc3afeb458d05dcf4.scn"]
 
 [params]
 

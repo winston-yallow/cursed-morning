@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://deuv2n2o4luf1"
-path="res://.godot/imported/suzanne.glb-157cb37b5086ef50e4a8b8ae6aea326c.scn"
+uid="uid://br1xpdjf5152o"
+path="res://.godot/imported/desk.glb-1089d925ecc64646d0ba405624216cea.scn"
 
 [deps]
 
-source_file="res://src/dreams/procedural/blender/suzanne.glb"
-dest_files=["res://.godot/imported/suzanne.glb-157cb37b5086ef50e4a8b8ae6aea326c.scn"]
+source_file="res://src/dreams/models/desk.glb"
+dest_files=["res://.godot/imported/desk.glb-1089d925ecc64646d0ba405624216cea.scn"]
 
 [params]
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bxpuooycswrm7"]
+[gd_scene load_steps=26 format=3]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_rl8kg"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="2_77i37"]
-[ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/procedural/blender/cube.glb" id="3_340rx"]
+[ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/models/cube.glb" id="3_340rx"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="4_h8jcq"]
 [ext_resource type="Script" path="res://src/quicktimes/action.gd" id="5_2x5vy"]
 [ext_resource type="Texture2D" uid="uid://bdtnu1yibsbmk" path="res://src/quicktimes/images/direction_w.png" id="5_qqwmg"]

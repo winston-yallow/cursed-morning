@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://mdp8ersk42oc"]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://src/dreams/chunk_start.gd" id="1_nspwv"]
-[ext_resource type="PackedScene" uid="uid://bgef3c5ejwshk" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
+[ext_resource type="PackedScene" path="res://src/dreams/shared_modules/office_end.tscn" id="2_3268r"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="3_2xoej"]
-[ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/procedural/blender/cube.glb" id="4_saqnc"]
+[ext_resource type="PackedScene" uid="uid://5nnskix6m38f" path="res://src/dreams/models/cube.glb" id="4_saqnc"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="5_eiqm1"]
 [ext_resource type="Texture2D" uid="uid://ceupoyukjuqj2" path="res://src/quicktimes/images/key_s.png" id="6_cb57o"]
 [ext_resource type="Script" path="res://src/quicktimes/action.gd" id="7_pyy72"]

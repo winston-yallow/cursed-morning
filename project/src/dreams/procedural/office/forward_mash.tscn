@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuw5ts6jwy2ux"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://src/dreams/chunk.gd" id="1_25pce"]
-[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/procedural/office/tile_doors.glb" id="2_fp4uq"]
-[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/procedural/office/desk.glb" id="2_xgo4r"]
+[ext_resource type="PackedScene" uid="uid://b5e10us8jlwam" path="res://src/dreams/models/tile_doors.glb" id="2_fp4uq"]
+[ext_resource type="PackedScene" uid="uid://br1xpdjf5152o" path="res://src/dreams/models/desk.glb" id="2_xgo4r"]
 [ext_resource type="Script" path="res://src/dreams/module_path.gd" id="3_imac7"]
 [ext_resource type="Script" path="res://src/quicktimes/quick_time_event.gd" id="5_p0dqt"]
 [ext_resource type="Script" path="res://src/quicktimes/action.gd" id="7_gviuf"]
