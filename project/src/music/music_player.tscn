@@ -1,23 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5pfveigr23rc"]
+[gd_scene load_steps=2 format=3 uid="uid://c5pfveigr23rc"]
 
-[ext_resource type="AudioStream" uid="uid://dy3uto83tw0j2" path="res://src/music/devotion.mp3" id="1_ocaxo"]
-[ext_resource type="AudioStream" uid="uid://b2lrj0yafealp" path="res://src/music/please_stay.mp3" id="2_1t530"]
-[ext_resource type="AudioStream" uid="uid://dabhv4mjeripd" path="res://src/music/trapped.mp3" id="3_lt8v8"]
 [ext_resource type="Script" path="res://src/music/music_player.gd" id="4_ndfkn"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w5kmj"]
-streams_count = 3
-random_pitch = 1.0
-random_volume_offset_db = 0.0
-stream_0/stream = ExtResource("1_ocaxo")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("2_1t530")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("3_lt8v8")
-stream_2/weight = 1.0
-
 [node name="Music Player" type="AudioStreamPlayer"]
-stream = SubResource("AudioStreamRandomizer_w5kmj")
-autoplay = true
 bus = &"Music"
 script = ExtResource("4_ndfkn")
