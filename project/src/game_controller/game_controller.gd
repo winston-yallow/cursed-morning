@@ -99,6 +99,8 @@ func gameover() -> void:
 		for child in canvas_layer.get_children():
 			if child is ActionUI:
 				at.tween_property(child, "modulate", Color.TRANSPARENT, duration)
+		# prevent error from empty tween
+		at.tween_callback(func(): pass)
 
 
 func _cleanup(_anim) -> void:
